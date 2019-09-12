@@ -92,3 +92,11 @@ post_wordcount:
   item_text: true
   wordcount: true
   min2read: true
+
+  #  动态背景
+  # --------------------------------------------------------------
+  # background settings
+  # --------------------------------------------------------------
+  # add canvas-nest effect
+  # see detail from https://github.com/hustcc/canvas-nest.js
+  canvas_nest: true
