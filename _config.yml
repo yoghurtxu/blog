@@ -73,7 +73,7 @@ pagination_dir: page
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-#theme: landscape
+# theme: landscape
 theme: next
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
@@ -92,3 +92,11 @@ post_wordcount:
   item_text: true
   wordcount: true
   min2read: true
+
+  #  动态背景
+  # --------------------------------------------------------------
+  # background settings
+  # --------------------------------------------------------------
+  # add canvas-nest effect
+  # see detail from https://github.com/hustcc/canvas-nest.js
+  canvas_nest: true
