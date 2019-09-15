@@ -2,18 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3647f66d-ce40-4ef2-86b3-a1177856fc27" name="默认更改列表" comment="">
-      <change afterPath="$PROJECT_DIR$/source/_posts/1.md" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/themes/next/layout/_macro/my-copyright.swig" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/themes/next/layout/_macro/passage-end-tag.swig" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/themes/next/source/css/_common/components/post/my-post-copyright.styl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/themes/next/source/js/src/totop.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_config.yml" beforeDir="false" afterPath="$PROJECT_DIR$/_config.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scaffolds/post.md" beforeDir="false" afterPath="$PROJECT_DIR$/scaffolds/post.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/_posts/new.md" beforeDir="false" afterPath="$PROJECT_DIR$/source/_posts/new.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/themes/landscape/_config.yml" beforeDir="false" afterPath="$PROJECT_DIR$/themes/landscape/_config.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/themes/next" beforeDir="false" afterPath="$PROJECT_DIR$/themes/next" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/themes/next/_config.yml" beforeDir="false" afterPath="$PROJECT_DIR$/themes/next/_config.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/themes/next/layout/_layout.swig" beforeDir="false" afterPath="$PROJECT_DIR$/themes/next/layout/_layout.swig" afterDir="false" />
