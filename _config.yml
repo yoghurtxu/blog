@@ -3,11 +3,11 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: Hexo
+title: My notes
 subtitle:
-description:
+description: JavaScript is the best language in the world
 keywords:
-author: Yoghurt Xu
+author: 增
 language:
 timezone:
 
@@ -100,3 +100,9 @@ post_wordcount:
   # add canvas-nest effect
   # see detail from https://github.com/hustcc/canvas-nest.js
   canvas_nest: true
+
+search:
+  path: search.xml
+  field: post
+  format: html
+  limit: 10000
