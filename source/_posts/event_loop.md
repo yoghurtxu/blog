@@ -1,7 +1,9 @@
 ---
 title: 'Event Loop'
 date: 2019-09-16 16:18:07
-tags:
+tags: Event Loop
+categories: javascript
+copyright: true
 ---
 ## 前言
 

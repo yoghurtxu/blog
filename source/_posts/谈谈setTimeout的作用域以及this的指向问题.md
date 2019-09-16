@@ -1,8 +1,9 @@
 ---
 title: '谈谈setTimeout的作用域以及this的指向问题'
 date: 2019-09-16 13:03:44
-tags:
-copyright:
+tags: setTimeout
+categories: javascript
+copyright: true
 ---
 
 setTimeout的常见用法是让某个方法延迟执行。我们知道，setTimeout方法是挂在window对象下的。《JavaScript高级程序设计》第二版中，写到：“超时调用的代码都是在全局作用域中执行的，因此函数中this的值在非严格模式下指向window对象，在严格模式下是undefined”。在这里，我们只讨论非严格模式。

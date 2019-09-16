@@ -1,8 +1,9 @@
 ---
 title: 'JavaScript中的LHS和RHS查询'
 date: 2019-09-16 17:04:49
-tags:
-copyright:
+tags: LHS和RHS
+categories: javascript
+copyright: true
 ---
 
 问题来源于《你不知道的JavaScript（上卷）》，文章部分论述截自原书。
