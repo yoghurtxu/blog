@@ -31,6 +31,7 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/themes/next" />
   </component>
+  <component name="ProjectId" id="1QtuyhgV6HbSqjuCUB80hJlYgYW" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="添加" />
   </component>
@@ -85,6 +86,7 @@
       <workItem from="1546581578379" duration="3751000" />
       <workItem from="1546593620599" duration="1000" />
       <workItem from="1546949877900" duration="945000" />
+      <workItem from="1568602499104" duration="910000" />
     </task>
     <servers />
   </component>
