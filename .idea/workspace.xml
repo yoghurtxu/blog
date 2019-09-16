@@ -5,27 +5,8 @@
       <change afterPath="$PROJECT_DIR$/themes/next/layout/_macro/my-copyright.swig" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/themes/next/layout/_macro/passage-end-tag.swig" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/themes/next/source/css/_common/components/post/my-post-copyright.styl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/_posts/1.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/_posts/2018-12-01-auto-open-editor-test.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/_posts/JavaScript中的LHS和RHS查询.md" beforeDir="false" afterPath="$PROJECT_DIR$/source/_posts/JavaScript中的LHS和RHS查询.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/_posts/a.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/_posts/auto-open-editor-test.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/_posts/demo-1.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/_posts/demo-2.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/_posts/demo-3.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/_posts/demo.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/_posts/event_loop.md" beforeDir="false" afterPath="$PROJECT_DIR$/source/_posts/event_loop.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/_posts/h.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/_posts/hello-world.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/_posts/new.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/_posts/tong.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/_posts/xrz.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/_posts/小书匠.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/_posts/浅拷贝与深拷贝.md" beforeDir="false" afterPath="$PROJECT_DIR$/source/_posts/浅拷贝与深拷贝.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/_posts/浅析浏览器渲染基本原理.md" beforeDir="false" afterPath="$PROJECT_DIR$/source/_posts/浅析浏览器渲染基本原理.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/_posts/谈谈setTimeout的作用域以及this的指向问题.md" beforeDir="false" afterPath="$PROJECT_DIR$/source/_posts/谈谈setTimeout的作用域以及this的指向问题.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/about/index.md" beforeDir="false" afterPath="$PROJECT_DIR$/source/about/index.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/themes/next" beforeDir="false" afterPath="$PROJECT_DIR$/themes/next" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/themes/next/_config.yml" beforeDir="false" afterPath="$PROJECT_DIR$/themes/next/_config.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/themes/next/layout/_layout.swig" beforeDir="false" afterPath="$PROJECT_DIR$/themes/next/layout/_layout.swig" afterDir="false" />
@@ -57,7 +38,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../vue-study" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.path.for.package.tslint" value="project" />
@@ -107,6 +88,7 @@
       <workItem from="1546593620599" duration="1000" />
       <workItem from="1546949877900" duration="945000" />
       <workItem from="1568602499104" duration="19335000" />
+      <workItem from="1568657374662" duration="181000" />
     </task>
     <servers />
   </component>
