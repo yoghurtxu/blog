@@ -2,6 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3647f66d-ce40-4ef2-86b3-a1177856fc27" name="默认更改列表" comment="">
+      <change afterPath="$PROJECT_DIR$/source/_posts/JavaScript中的LHS和RHS查询.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/source/_posts/event_loop.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/source/_posts/浅拷贝与深拷贝.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/source/_posts/谈谈setTimeout的作用域以及this的指向问题.md" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/themes/next/layout/_macro/my-copyright.swig" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/themes/next/layout/_macro/passage-end-tag.swig" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/themes/next/source/css/_common/components/post/my-post-copyright.styl" afterDir="false" />
@@ -29,7 +33,7 @@
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/themes/next" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1QtuyhgV6HbSqjuCUB80hJlYgYW" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -37,7 +41,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../vue-study" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.path.for.package.tslint" value="project" />
@@ -86,7 +90,7 @@
       <workItem from="1546581578379" duration="3751000" />
       <workItem from="1546593620599" duration="1000" />
       <workItem from="1546949877900" duration="945000" />
-      <workItem from="1568602499104" duration="910000" />
+      <workItem from="1568602499104" duration="12022000" />
     </task>
     <servers />
   </component>
