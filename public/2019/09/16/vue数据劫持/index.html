@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="setTimeout,">
+  <meta name="keywords" content="数据劫持,">
 
 
 
@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="setTimeout的常见用法是让某个方法延迟执行。我们知道，setTimeout方法是挂在window对象下的。《JavaScript高级程序设计》第二版中，写到：“超时调用的代码都是在全局作用域中执行的，因此函数中this的值在非严格模式下指向window对象，在严格模式下是undefined”。在这里，我们只讨论非严格模式。 setTimeout接受两个参数，第一个是要执行的代码或函数，第二">
-<meta name="keywords" content="setTimeout">
+<meta name="description" content="vue3.0怎么实现数据劫持的什么是数据劫持数据劫持通常我们利用Object.defineProperty劫持对象的访问器,在属性值发生变化时我们可以获取变化,从而进行进一步操作。 数据劫持的优势 不用复杂的调用 可以得知变化的数据  首先我们看下2.x用Object.defineProperty实现的简单的双向绑定 123456789101112131415const obj = &amp;#123;&amp;">
+<meta name="keywords" content="数据劫持">
 <meta property="og:type" content="article">
-<meta property="og:title" content="谈谈setTimeout的作用域以及this的指向问题">
-<meta property="og:url" content="http://yoursite.com/2019/09/16/谈谈setTimeout的作用域以及this的指向问题/index.html">
+<meta property="og:title" content="vue数据劫持">
+<meta property="og:url" content="http://yoursite.com/2019/09/16/vue数据劫持/index.html">
 <meta property="og:site_name" content="My notes">
-<meta property="og:description" content="setTimeout的常见用法是让某个方法延迟执行。我们知道，setTimeout方法是挂在window对象下的。《JavaScript高级程序设计》第二版中，写到：“超时调用的代码都是在全局作用域中执行的，因此函数中this的值在非严格模式下指向window对象，在严格模式下是undefined”。在这里，我们只讨论非严格模式。 setTimeout接受两个参数，第一个是要执行的代码或函数，第二">
+<meta property="og:description" content="vue3.0怎么实现数据劫持的什么是数据劫持数据劫持通常我们利用Object.defineProperty劫持对象的访问器,在属性值发生变化时我们可以获取变化,从而进行进一步操作。 数据劫持的优势 不用复杂的调用 可以得知变化的数据  首先我们看下2.x用Object.defineProperty实现的简单的双向绑定 123456789101112131415const obj = &amp;#123;&amp;">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-09-16T18:14:36.139Z">
+<meta property="og:updated_time" content="2019-09-16T18:14:36.111Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="谈谈setTimeout的作用域以及this的指向问题">
-<meta name="twitter:description" content="setTimeout的常见用法是让某个方法延迟执行。我们知道，setTimeout方法是挂在window对象下的。《JavaScript高级程序设计》第二版中，写到：“超时调用的代码都是在全局作用域中执行的，因此函数中this的值在非严格模式下指向window对象，在严格模式下是undefined”。在这里，我们只讨论非严格模式。 setTimeout接受两个参数，第一个是要执行的代码或函数，第二">
+<meta name="twitter:title" content="vue数据劫持">
+<meta name="twitter:description" content="vue3.0怎么实现数据劫持的什么是数据劫持数据劫持通常我们利用Object.defineProperty劫持对象的访问器,在属性值发生变化时我们可以获取变化,从而进行进一步操作。 数据劫持的优势 不用复杂的调用 可以得知变化的数据  首先我们看下2.x用Object.defineProperty实现的简单的双向绑定 123456789101112131415const obj = &amp;#123;&amp;">
 
 
 
@@ -120,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/09/16/谈谈setTimeout的作用域以及this的指向问题/">
+  <link rel="canonical" href="http://yoursite.com/2019/09/16/vue数据劫持/">
 
 
 
 
 
-  <title>谈谈setTimeout的作用域以及this的指向问题 | My notes</title>
+  <title>vue数据劫持 | My notes</title>
   
 
 
@@ -295,7 +295,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/16/谈谈setTimeout的作用域以及this的指向问题/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/16/vue数据劫持/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="增">
@@ -312,7 +312,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">谈谈setTimeout的作用域以及this的指向问题</h1>
+          <h1 class="post-title" itemprop="name headline">vue数据劫持</h1>
         
 
         <div class="post-meta">
@@ -324,7 +324,7 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-09-16T13:03:44+08:00">
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-09-16T23:48:01+08:00">
                 2019-09-16
               </time>
             
@@ -347,8 +347,8 @@
               
               
                 <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/javascript/" itemprop="url" rel="index">
-                    <span itemprop="name">javascript</span>
+                  <a href="/categories/vue/" itemprop="url" rel="index">
+                    <span itemprop="name">vue</span>
                   </a>
                 </span>
 
@@ -365,8 +365,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2019/09/16/谈谈setTimeout的作用域以及this的指向问题/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/09/16/谈谈setTimeout的作用域以及this的指向问题/" itemprop="commentCount"></span>
+                <a href="/2019/09/16/vue数据劫持/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/09/16/vue数据劫持/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -388,7 +388,7 @@
                   <span class="post-meta-item-text">Words count in article&#58;</span>
                 
                 <span title="Words count in article">
-                  1.9k
+                  954
                 </span>
               
 
@@ -404,7 +404,7 @@
                   <span class="post-meta-item-text">Reading time &asymp;</span>
                 
                 <span title="Reading time">
-                  8
+                  4
                 </span>
               
             </div>
@@ -425,62 +425,33 @@
       
 
       
-        <p>setTimeout的常见用法是让某个方法延迟执行。我们知道，setTimeout方法是挂在window对象下的。《JavaScript高级程序设计》第二版中，写到：“超时调用的代码都是在全局作用域中执行的，因此函数中this的值在非严格模式下指向window对象，在严格模式下是undefined”。在这里，我们只讨论非严格模式。</p>
-<p>setTimeout接受两个参数，第一个是要执行的代码或函数，第二个是延迟的时间。</p>
-<p>一、先说结论：setTimeout中所执行函数中的this，永远指向window！！注意是要<strong>延迟执行的函数中的this</strong>哦！！</p>
+        <h1 id="vue3-0怎么实现数据劫持的"><a href="#vue3-0怎么实现数据劫持的" class="headerlink" title="vue3.0怎么实现数据劫持的"></a>vue3.0怎么实现数据劫持的</h1><h2 id="什么是数据劫持"><a href="#什么是数据劫持" class="headerlink" title="什么是数据劫持"></a>什么是数据劫持</h2><p>数据劫持通常我们利用<code>Object.defineProperty</code>劫持对象的访问器,在属性值发生变化时我们可以获取变化,从而进行进一步操作。</p>
+<h2 id="数据劫持的优势"><a href="#数据劫持的优势" class="headerlink" title="数据劫持的优势"></a>数据劫持的优势</h2><ol>
+<li>不用复杂的调用</li>
+<li>可以得知变化的数据</li>
+</ol>
+<p>首先我们看下2.x用<code>Object.defineProperty</code>实现的简单的双向绑定</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> obj = &#123;&#125;;</span><br><span class="line"><span class="built_in">Object</span>.defineProperty(obj, <span class="string">'text'</span>, &#123;</span><br><span class="line">    get: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'get val'</span>);</span><br><span class="line">    &#125;,</span><br><span class="line">    set: <span class="function"><span class="keyword">function</span>(<span class="params">newVal</span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'set val:'</span>+newVal)</span><br><span class="line">        <span class="built_in">document</span>.getElementById(<span class="string">'input'</span>).value = newVal;</span><br><span class="line">        <span class="built_in">document</span>.getElementById(<span class="string">'span'</span>).innerHTML = newVal;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line"><span class="keyword">const</span> oinput = <span class="built_in">document</span>.getElementById(<span class="string">'input'</span>);</span><br><span class="line">oinput.addEventListener(<span class="string">'keyup'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">e</span>)</span>&#123;</span><br><span class="line">    obj.text = e.target.value;  </span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h2 id="Vue2-x的缺陷"><a href="#Vue2-x的缺陷" class="headerlink" title="Vue2.x的缺陷"></a>Vue2.x的缺陷</h2><h3 id="属性值改为数组就无法监听数组变化"><a href="#属性值改为数组就无法监听数组变化" class="headerlink" title="属性值改为数组就无法监听数组变化"></a>属性值改为数组就无法监听数组变化</h3><ul>
+<li>尤大神用了一些奇技淫巧,把无法监听数组的情况hack掉了</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> aryMethods = [<span class="string">'push'</span>, <span class="string">'pop'</span>, <span class="string">'shift'</span>, <span class="string">'unshift'</span>, <span class="string">'splice'</span>, <span class="string">'sort'</span>, <span class="string">'reverse'</span>];</span><br><span class="line"><span class="keyword">const</span> arrayAugmentations = [];</span><br><span class="line">aryMethods.forEach(<span class="function">(<span class="params">method</span>)=&gt;</span> &#123;</span><br><span class="line">    <span class="comment">// 这里是原生Array的原型方法</span></span><br><span class="line">    <span class="keyword">let</span> original = <span class="built_in">Array</span>.prototype[method];</span><br><span class="line">   <span class="comment">// 将push, pop等封装好的方法定义在对象arrayAugmentations的属性上</span></span><br><span class="line">   <span class="comment">// 注意：是属性而非原型属性</span></span><br><span class="line">    arrayAugmentations[method] = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'我被改变啦!'</span>);</span><br><span class="line">        <span class="comment">// 调用对应的原生方法并返回结果</span></span><br><span class="line">        <span class="keyword">return</span> original.apply(<span class="keyword">this</span>, <span class="built_in">arguments</span>);</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;);</span><br><span class="line"><span class="keyword">let</span> list = [<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>];</span><br><span class="line"><span class="comment">// 将我们要监听的数组的原型指针指向上面定义的空数组对象</span></span><br><span class="line"><span class="comment">// 别忘了这个空数组的属性上定义了我们封装好的push等方法</span></span><br><span class="line">list.__proto__ = arrayAugmentations;</span><br><span class="line">list.push(<span class="string">'d'</span>);  <span class="comment">// 我被改变啦！ 4</span></span><br><span class="line"><span class="comment">// 这里的list2没有被重新定义原型指针，所以就正常输出</span></span><br><span class="line"><span class="keyword">let</span> list2 = [<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>];</span><br><span class="line">list2.push(<span class="string">'d'</span>);  <span class="comment">// 4</span></span><br></pre></td></tr></table></figure>
+<h3 id="只能劫持对象的属性"><a href="#只能劫持对象的属性" class="headerlink" title="只能劫持对象的属性"></a>只能劫持对象的属性</h3><p>假如需要对每个对象的每个属性进行遍历，如果属性值也是对象那么需要深度遍历,显然能劫持一个完整的对象是更好的选择。</p>
+<h2 id="Vue3-x的特点"><a href="#Vue3-x的特点" class="headerlink" title="Vue3.x的特点"></a>Vue3.x的特点</h2><p><strong>带着以上缺点我们看下3.x版本怎么实现数据劫持</strong></p>
+<blockquote>
+<p>3.x版本中把<code>Object.defineProperty</code>换成<code>Proxy</code></p>
+<p>Proxy在ES6规范中被正式发布,它在目标对象之前架设一层“拦截”，外界对该对象的访问，都必须先通过这层拦截，因此提供了一种机制，可以对外界的访问进行过滤和改写,我们可以这样认为,Proxy是<code>Object.defineProperty</code>的全方位加强版</p>
+<p>如果对<code>Proxy</code>属性还不是很了解的小伙伴 可以翻阅下Es6官方文档</p>
+</blockquote>
+<h3 id="Proxy可以直接监听数组的变化"><a href="#Proxy可以直接监听数组的变化" class="headerlink" title="Proxy可以直接监听数组的变化"></a>Proxy可以直接监听数组的变化</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> olist = <span class="built_in">document</span>.getElementById(<span class="string">'list'</span>);</span><br><span class="line"><span class="keyword">const</span> obtn = <span class="built_in">document</span>.getElementById(<span class="string">'btn'</span>);</span><br><span class="line"><span class="comment">// 渲染列表</span></span><br><span class="line"><span class="keyword">const</span> Render = &#123;</span><br><span class="line">  <span class="comment">// 初始化</span></span><br><span class="line">  init: <span class="function"><span class="keyword">function</span>(<span class="params">arr</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">const</span> fragment = <span class="built_in">document</span>.createDocumentFragment();</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; arr.length; i++) &#123;</span><br><span class="line">      <span class="keyword">const</span> li = <span class="built_in">document</span>.createElement(<span class="string">'li'</span>);</span><br><span class="line">      li.textContent = arr[i];</span><br><span class="line">      fragment.appendChild(li);</span><br><span class="line">    &#125;</span><br><span class="line">    olist.appendChild(fragment);</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="comment">// 我们只考虑了增加的情况,仅作为示例</span></span><br><span class="line">  change: <span class="function"><span class="keyword">function</span>(<span class="params">val</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">const</span> li = <span class="built_in">document</span>.createElement(<span class="string">'li'</span>);</span><br><span class="line">    li.textContent = val;</span><br><span class="line">    olist.appendChild(li);</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">// 初始数组</span></span><br><span class="line"><span class="keyword">const</span> arr = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>];</span><br><span class="line"><span class="comment">// 监听数组</span></span><br><span class="line"><span class="keyword">const</span> newArr = <span class="keyword">new</span> <span class="built_in">Proxy</span>(arr, &#123;</span><br><span class="line">  get: <span class="function"><span class="keyword">function</span>(<span class="params">target, key, receiver</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(key);</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">Reflect</span>.get(target, key, receiver);</span><br><span class="line">  &#125;,</span><br><span class="line">  set: <span class="function"><span class="keyword">function</span>(<span class="params">target, key, value, receiver</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(target, key, value, receiver);</span><br><span class="line">    <span class="keyword">if</span> (key !== <span class="string">'length'</span>) &#123;</span><br><span class="line">      Render.change(value);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">Reflect</span>.set(target, key, value, receiver);</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;);</span><br><span class="line"><span class="comment">// 初始化</span></span><br><span class="line"><span class="built_in">window</span>.onload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    Render.init(arr);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// push数字</span></span><br><span class="line">obtn.addEventListener(<span class="string">'click'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  newArr.push(<span class="number">6</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h3 id="Proxy可以直接监听对象而非属性"><a href="#Proxy可以直接监听对象而非属性" class="headerlink" title="Proxy可以直接监听对象而非属性"></a>Proxy可以直接监听对象而非属性</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> input = <span class="built_in">document</span>.getElementById(<span class="string">'input'</span>);</span><br><span class="line"><span class="keyword">const</span> p = <span class="built_in">document</span>.getElementById(<span class="string">'p'</span>);</span><br><span class="line"><span class="keyword">const</span> obj = &#123;&#125;;</span><br><span class="line"><span class="keyword">const</span> newObj = <span class="keyword">new</span> <span class="built_in">Proxy</span>(obj, &#123;</span><br><span class="line">  get: <span class="function"><span class="keyword">function</span>(<span class="params">target, key, receiver</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">`getting <span class="subst">$&#123;key&#125;</span>!`</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">Reflect</span>.get(target, key, receiver);</span><br><span class="line">  &#125;,</span><br><span class="line">  set: <span class="function"><span class="keyword">function</span>(<span class="params">target, key, value, receiver</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(target, key, value, receiver);</span><br><span class="line">    <span class="keyword">if</span> (key === <span class="string">'text'</span>) &#123;</span><br><span class="line">      input.value = value;</span><br><span class="line">      p.innerHTML = value;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">Reflect</span>.set(target, key, value, receiver);</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;);</span><br><span class="line">input.addEventListener(<span class="string">'keyup'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</span><br><span class="line">  newObj.text = e.target.value;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>Proxy特点:</p>
 <ol>
-<li>直接使用，代码1.1：</li>
+<li>可以劫持整个对象，并返回一个新对象</li>
+<li>有13种劫持操作</li>
+<li>Proxy是es6提供的，兼容性不好,无法用polyfill磨平</li>
+<li>友情提示:目标对象内部的this关键字会指向 Proxy 代理</li>
 </ol>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">setTimeout(<span class="string">"alert(this)"</span>, <span class="number">1</span>);<span class="comment">// [object Window]</span></span><br></pre></td></tr></table></figure>
-<ol start="2">
-<li>在一个对象中调用setTimeout试试，代码1.2：</li>
-</ol>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">        say: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">            setTimeout(<span class="string">"alert('in obj ' + this)"</span>, <span class="number">0</span>)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    obj.say();   <span class="comment">// in obj [object Window]</span></span><br></pre></td></tr></table></figure>
-<ol start="3">
-<li>将执行的代码换成匿名函数试试，代码1.3：</li>
-</ol>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">varobj = &#123;</span><br><span class="line">        say: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">            setTimeout(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">                alert(<span class="keyword">this</span>)</span><br><span class="line">            &#125;, <span class="number">0</span>)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    obj.say();   <span class="comment">//  [object Window]</span></span><br></pre></td></tr></table></figure>
-<ol start="4">
-<li>换成函数引用再试试吧，代码1.4：</li>
-</ol>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">talk</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  alert(<span class="keyword">this</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">  say: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    setTimeout(talk, <span class="number">0</span>)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">obj.say();   <span class="comment">//  [object Window]</span></span><br></pre></td></tr></table></figure>
-<p>恩，貌似得到的结论是正确的，setTimeout中的延迟执行函数中的this指向了window。这里我反复的强调，是延迟执行函数中的this，是因为，我们经常会面对两个this。<strong>一个是setTimeout调用环境中的this，一个就是延迟执行函数中的this</strong>。这两个this有时候是不同的。有些不放心？？再多写一些代码测试一下！　　</p>
-<p> 二、setTimeout中的两个this到底指向谁？？为了便于区分，<strong>我们把setTimeout调用环境下的this称之为第一个this，把延迟执行函数中的this称之为第二个this</strong>，并在代码注释中标出来，方便您区分。先说得出的结论：<strong>第一个this的指向是需要根据上下文来确定的，默认为window；第二个this就是指向window</strong>。然后我们通过代码来验证下。</p>
-<ol>
-<li>函数作为方法调用还是构造函数调用，this是不同的。先看代码，代码2.1：</li>
-</ol>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Foo</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.value = <span class="number">42</span>;</span><br><span class="line">    <span class="keyword">this</span>.method = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="comment">// this 指向全局对象</span></span><br><span class="line">        alert(<span class="keyword">this</span>)   <span class="comment">// 输出window  第二个this</span></span><br><span class="line">        alert(<span class="keyword">this</span>.value); <span class="comment">// 输出：undefined   第二个this</span></span><br><span class="line">    &#125;;</span><br><span class="line">    setTimeout(<span class="keyword">this</span>.method, <span class="number">500</span>);  <span class="comment">// this指向Foo的实例对象  第一个this</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">new</span> Foo();</span><br></pre></td></tr></table></figure>
-<p>我们new了一个Foo对象，那么this.method中的this指向的是new的对象，否则无法调用method方法。但是进了method方法后，方法中的this又指向了window，因此this.value的值为undefined。</p>
-<p>我们在外层添加一段代码，再看看，代码2.2：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> value=<span class="number">33</span>;</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Foo</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.value = <span class="number">42</span>;</span><br><span class="line">    <span class="keyword">this</span>.method = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="comment">// this 指向全局对象</span></span><br><span class="line">        alert(<span class="keyword">this</span>)   <span class="comment">// 输出window    第二个this</span></span><br><span class="line">        alert(<span class="keyword">this</span>.value); <span class="comment">// 输出：33   第二个this</span></span><br><span class="line">    &#125;;</span><br><span class="line">    setTimeout(<span class="keyword">this</span>.method, <span class="number">500</span>);  <span class="comment">// 这里的this指向Foo的实例对象  第一个this</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">new</span> Foo();</span><br></pre></td></tr></table></figure>
-<p>从这里，可以明显的看到，method方法中的this指向的是window，因为可以输出外层的value值。那为什么setTimeout中的this指向的是Foo的实例对象呢？</p>
-<p>我觉得代码2.2就等价于下面的代码，如代码2.3：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> value=<span class="number">33</span>;</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Foo</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.value = <span class="number">42</span>;</span><br><span class="line">    setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;alert(<span class="keyword">this</span>);alert(<span class="keyword">this</span>.value)&#125;, <span class="number">500</span>);  <span class="comment">// 先后输出 window   33  这里是第二个this</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">new</span> Foo();</span><br></pre></td></tr></table></figure>
-<p>setTimeout中的第一个参数就是一个单纯的函数的引用而已，而函数中的this仍然指向的是window。在setTimeout(this.method, time) 中的this是可以根据上下文而改变的，其最终的目的是要得到一个函数指针。我们再来验证一下，看代码2.4:</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">method</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  alert(<span class="keyword">this</span>.value);  <span class="comment">// 输出 42  第二个this</span></span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Foo</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.value = <span class="number">42</span>;</span><br><span class="line">    setTimeout(<span class="keyword">this</span>.method, <span class="number">500</span>);  <span class="comment">// 这里this指向window   第一个this</span></span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line">Foo();</span><br></pre></td></tr></table></figure>
-<p>这次我们将Foo当成方法直接执行，method方法放到外层，即挂在window上面。而this则指向了window，因此可以调用method方法。method方法中的this仍然指向window，而Foo()执行的时候，对window.value进行了赋值(this.value=42)，因此输出了42。</p>
-<p>　</p>
-<p>三、实践。知道了得出的结论，我们来阅读一下比较奇葩的一些代码，进行验证。　　</p>
-<p>首先在一个函数中，调用setTimeout。代码3.1：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> test = <span class="string">"in the window"</span>;</span><br><span class="line"> </span><br><span class="line">setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;alert(<span class="string">'outer '</span> + test)&#125;, <span class="number">0</span>); <span class="comment">// 输出 outer in the window ，默认在window的全局作用域下</span></span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> test = <span class="string">'in the f!'</span>;  <span class="comment">// 局部变量，window作用域不可访问</span></span><br><span class="line">  setTimeout(<span class="string">'alert("inner " + test)'</span>, <span class="number">0</span>);  <span class="comment">// 输出 outer in the window, 虽然在f方法的中调用，但执行代码(字符串形式的代码)默认在window全局作用域下，test也指向全局的test</span></span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line">f();</span><br></pre></td></tr></table></figure>
-<p>在f方法中，setTimeout中的test的值是外层的test，而不是f作用域中的test。再看代码3.2：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> test = <span class="string">"in the window"</span>;</span><br><span class="line"> </span><br><span class="line">setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;alert(<span class="string">'outer'</span> + test)&#125;, <span class="number">0</span>); <span class="comment">// outer in the window  ，没有问题，在全局下调用，访问全局中的test</span></span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> test = <span class="string">'in the f!'</span>;</span><br><span class="line">  setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;alert(<span class="string">'inner '</span>+ test)&#125;, <span class="number">0</span>);  <span class="comment">// inner in the f! 有问题，不是说好了执行函数中的this指向的是window吗？那test也应该对应window下的值才对，怎么test的值却是 f()中的值呢？？？？</span></span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line">f();</span><br></pre></td></tr></table></figure>
-<p>按照前面的经验，f中的setTimeout中的test也应该明明应该是指向外层的test才对吧？？？我们注意到，这个f里面的setTimeout中的第一个参数是一个匿名函数，这是上面两端代码最大的不同。而只要是函数就有它的作用域，我们可以将上面的代码替换成下面的代码3.3：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> test = <span class="string">"in the window"</span>;</span><br><span class="line"> </span><br><span class="line">setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;alert(<span class="string">'outer '</span> + test)&#125;, <span class="number">0</span>); <span class="comment">// in the window</span></span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> test = <span class="string">'in the f!'</span>;</span><br><span class="line"> </span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">ff</span>(<span class="params"></span>) </span>&#123;alert(<span class="string">'inner '</span> + test)&#125; <span class="comment">// 能访问到f中的test局部变量</span></span><br><span class="line"> </span><br><span class="line">  setTimeout(ff, <span class="number">0</span>);  <span class="comment">// inner in the f!</span></span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line">f();</span><br></pre></td></tr></table></figure>
-<p> 再看一段更清晰的代码，3.4：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> value=<span class="number">33</span>;</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Foo</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> value = <span class="number">42</span>;</span><br><span class="line">    setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;alert(value);alert(<span class="keyword">this</span>.value)&#125;, <span class="number">500</span>);  <span class="comment">// 先后输出 42 然后输出33  这里的this是第二个this</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">new</span> Foo();</span><br></pre></td></tr></table></figure>
-<p>可以确定，延迟执行函数中的this的确是指向了window，毫无疑问，上面的所有代码都可以验证哈。但是延迟执行函数中的其他变量需要根据上下文来确认。</p>
-<p>修改代码3.4为3.5，去掉匿名函数的调用方式，会更加清晰：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> value=<span class="number">33</span>;</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Foo</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> value = <span class="number">42</span>;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">ff</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">      alert(value);  <span class="comment">// 42</span></span><br><span class="line">      alert(<span class="keyword">this</span>.value);  <span class="comment">// 33</span></span><br><span class="line">    &#125;</span><br><span class="line">    setTimeout(ff, <span class="number">500</span>);  <span class="comment">// 先后输出 42   33 </span></span><br><span class="line">&#125;</span><br><span class="line">Foo(); <span class="comment">// 直接执行，跟普通函数没有区别</span></span><br></pre></td></tr></table></figure>
-<p>因此，如果去掉Foo中的value=42的话，那么value的值等于多少呢？undefined还是外层的33？？请看3.5：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> value=<span class="number">33</span>;</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Foo</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">ff</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">      alert(value);   <span class="comment">// 输出33</span></span><br><span class="line">      alert(<span class="keyword">this</span>.value);  <span class="comment">// 输出33  this指向window</span></span><br><span class="line">    &#125;</span><br><span class="line">    setTimeout(ff, <span class="number">500</span>);  <span class="comment">// 先后输出 33  33</span></span><br><span class="line">&#125;</span><br><span class="line">Foo();</span><br></pre></td></tr></table></figure>
-<p>没错，就是外层的33，因为ff可以访问到window下的value值，就如同setTimeout中的匿名函数一样。　　　　</p>
-<p>最后，我们通过对象的方式进行调用，代码3.6：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">  name: <span class="string">'hutaoer'</span>,</span><br><span class="line">  say: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> self = <span class="keyword">this</span>;</span><br><span class="line">    setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">      alert(self);   <span class="comment">// 输出 object ，指向obj</span></span><br><span class="line">      alert(<span class="keyword">this</span>);   <span class="comment">// 第二个this，指向window，我心永恒，从未改变</span></span><br><span class="line">      alert(self.name)  <span class="comment">// 输出 hutaoer</span></span><br><span class="line">    &#125;, <span class="number">0</span>)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line">obj.say();</span><br></pre></td></tr></table></figure>
-<p>最后，如果您到看懂了上面的例子，那么我们可以回顾一下得出的一些结论咯：</p>
-<p>一、<strong>setTimeout中的延迟执行代码中的this永远都指向window</strong></p>
-<p>二、<strong>setTimeout(this.method, time)这种形式中的this，即上文中提到的第一个this，是根据上下文来判断的，默认为全局作用域，但不一定总是处于全局下，具体问题具体分析。</strong></p>
-<p>三、<strong>setTimeout(匿名函数, time)这种形式下，匿名函数中的变量也需要根据上下文来判断，具体问题具体分析</strong>。</p>
 
       
     </div>
@@ -496,12 +467,12 @@
   <!-- JS库 sweetalert 可修改路径 -->
   <script src="https://cdn.bootcss.com/jquery/2.0.0/jquery.min.js"></script>
   <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-  <p><span>本文标题:</span><a href="/2019/09/16/谈谈setTimeout的作用域以及this的指向问题/">谈谈setTimeout的作用域以及this的指向问题</a></p>
+  <p><span>本文标题:</span><a href="/2019/09/16/vue数据劫持/">vue数据劫持</a></p>
   <p><span>文章作者:</span><a href="/" title="访问 增 的个人博客">增</a></p>
-  <p><span>发布时间:</span>2019年09月16日 - 13:03</p>
+  <p><span>发布时间:</span>2019年09月16日 - 23:48</p>
   <p><span>最后更新:</span>2019年09月17日 - 02:14</p>
-  <p><span>原始链接:</span><a href="/2019/09/16/谈谈setTimeout的作用域以及this的指向问题/" title="谈谈setTimeout的作用域以及this的指向问题">http://yoursite.com/2019/09/16/谈谈setTimeout的作用域以及this的指向问题/</a>
-    <span class="copy-path" title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://yoursite.com/2019/09/16/谈谈setTimeout的作用域以及this的指向问题/" aria-label="复制成功！"></i></span>
+  <p><span>原始链接:</span><a href="/2019/09/16/vue数据劫持/" title="vue数据劫持">http://yoursite.com/2019/09/16/vue数据劫持/</a>
+    <span class="copy-path" title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://yoursite.com/2019/09/16/vue数据劫持/" aria-label="复制成功！"></i></span>
   </p>
   <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>
 </div>
@@ -532,7 +503,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/setTimeout/" rel="tag"># setTimeout</a>
+            <a href="/tags/数据劫持/" rel="tag"># 数据劫持</a>
           
         </div>
       
@@ -545,8 +516,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/09/16/浅拷贝与深拷贝/" rel="next" title="浅拷贝与深拷贝">
-                <i class="fa fa-chevron-left"></i> 浅拷贝与深拷贝
+              <a href="/2019/09/16/angular脏值检测/" rel="next" title="angular脏值检测">
+                <i class="fa fa-chevron-left"></i> angular脏值检测
               </a>
             
           </div>
@@ -554,10 +525,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/09/16/event_loop/" rel="prev" title="Event Loop">
-                Event Loop <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -624,8 +591,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -687,6 +663,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#vue3-0怎么实现数据劫持的"><span class="nav-number">1.</span> <span class="nav-text">vue3.0怎么实现数据劫持的</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是数据劫持"><span class="nav-number">1.1.</span> <span class="nav-text">什么是数据劫持</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据劫持的优势"><span class="nav-number">1.2.</span> <span class="nav-text">数据劫持的优势</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Vue2-x的缺陷"><span class="nav-number">1.3.</span> <span class="nav-text">Vue2.x的缺陷</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#属性值改为数组就无法监听数组变化"><span class="nav-number">1.3.1.</span> <span class="nav-text">属性值改为数组就无法监听数组变化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#只能劫持对象的属性"><span class="nav-number">1.3.2.</span> <span class="nav-text">只能劫持对象的属性</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Vue3-x的特点"><span class="nav-number">1.4.</span> <span class="nav-text">Vue3.x的特点</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Proxy可以直接监听数组的变化"><span class="nav-number">1.4.1.</span> <span class="nav-text">Proxy可以直接监听数组的变化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Proxy可以直接监听对象而非属性"><span class="nav-number">1.4.2.</span> <span class="nav-text">Proxy可以直接监听对象而非属性</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">1.5.</span> <span class="nav-text">总结</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       

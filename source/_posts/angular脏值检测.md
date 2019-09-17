@@ -15,7 +15,6 @@ copyright: true
 那么脏值检测在单页应用扮演了什么角色呢？
 
  ![img](https://images2015.cnblogs.com/blog/1028445/201707/1028445-20170708152854378-1088268803.png)
-
 为了支持单页SPA应用，angular1引入了指令的概念，能够扩展HTML标签并且封装相关的DOM逻辑，以此来构建组件，组件再组合成一个个网页。angular2也保留了指令的概念。那么angular2和1版本的区别在哪里呢？angular2的指令则是简化版的指令API，能通过属性型的指令给DOM标签添加行为。
 
 而与此同时，组件则可以看做指令API的补充，既可以添加模板，也可以添加行为，组件继承自指令。
@@ -31,9 +30,6 @@ export class Tooltip {
 
 # 二: angular1中的脏值检测
 
-ch4-change-detection/angular1-demo/index.html:
-
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
 
 ```
 <!DOCTYPE html>
@@ -61,8 +57,6 @@ ch4-change-detection/angular1-demo/index.html:
 </html>
 ```
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
-
 浏览器结果
 
 ![img](https://images2015.cnblogs.com/blog/1028445/201707/1028445-20170708153549612-1012918620.png)
@@ -77,7 +71,7 @@ angular1的数据绑定，酷炫而神秘！可是它幕后实际发生了什么
 
 但这种发生特定事件(有可能在框架管理范围内，也可能在范围外部)会调用digest循环有缺点。比如回调函数有setTimeOut定时器，定时器把绑定到Scope上的属性给修改了，那么angular就无法察觉对象的改变了。angular2解决这个问题。
 
-# 二: angular2更优的脏值检测
+# 三: angular2更优的脏值检测
 
 1.zone.js库
 

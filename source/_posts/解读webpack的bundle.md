@@ -9,18 +9,14 @@ copyright: true
 可能就是好奇心略重了，读了一下webpack打包后的bundle.js的代码，复杂的模块可能读不懂，但简单的hello world模块我还是能看懂的。没什么目的，就是想通过几个简单的模块，一条简单的webpack命令，一个神奇的bundle.js代码来了解webpack是怎么把遵循commonJs规范的模块应用到浏览器端的。
 
 几个简单的模块：
-![img](https://images2015.cnblogs.com/blog/861164/201611/861164-20161125223838565-2047559028.jpg)
+![img](https://rzaliyun.oss-cn-beijing.aliyuncs.com/blog/bundle_1.jpg?x-oss-process=style/demo)
 
 一条简单的webpack命令：
-![img](https://images2015.cnblogs.com/blog/861164/201611/861164-20161125210146643-1071215668.jpg)
+![img](https://rzaliyun.oss-cn-beijing.aliyuncs.com/blog/bundle_2.jpg?x-oss-process=style/demo)
 
 一个神奇的bundle.js：
 
-![img](https://images.cnblogs.com/OutliningIndicators/ContractedBlock.gif) View Code
-
-注释太多有点懵逼，可是细看也不就是一个立即执行的函数表达式嘛（IIFE），这是JavaScript中常见的独立作用域的方法。这里我将注释简化一下：
-
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+无非就是一个立即执行的函数表达式嘛（IIFE），这是JavaScript中常见的独立作用域的方法。这里我将注释简化一下：
 
 ```
  1 (function(modules){
@@ -62,8 +58,6 @@ copyright: true
 37     module.exports = 'Hello world';
 38 }]);
 ```
-
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
 
 这个IIFE接收一个数组作为参数modules，数组的每一项都是一个匿名函数代表一个模块（index.js和hello.js模块）。可是为什么构建命令中只出现了“index.js"呢，这是因为webpack通过静态分析index.js文件得到语法树，递归检测index.js所依赖的模块，以及依赖的依赖，入口模块和所有的依赖模块作为数组中的项，并合并到最终的代码中。
 
