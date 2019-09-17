@@ -91,7 +91,7 @@ var c = foo(2);
 
    （对作用域链的具体介绍可以移步 [理解 JavaScript 的作用域链](https://blog.csdn.net/zwkkkk1/article/details/79767681)）
 
-   ![img](https://img-blog.csdn.net/20180328115116797?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3p3a2trazE=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70)
+   ![img](https://rzaliyun.oss-cn-beijing.aliyuncs.com/blog/LHS.png?x-oss-process=style/demo)
 
    这个建筑代表储蓄中的嵌套作用域链。第一层楼代表当前的执行作用域，也就是你所在的位置。建筑的顶层代表全局作用域。
 

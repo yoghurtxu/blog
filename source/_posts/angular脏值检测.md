@@ -14,7 +14,7 @@ copyright: true
 
 那么脏值检测在单页应用扮演了什么角色呢？
 
- ![img](https://images2015.cnblogs.com/blog/1028445/201707/1028445-20170708152854378-1088268803.png)
+ ![img](https://rzaliyun.oss-cn-beijing.aliyuncs.com/blog/dirty_1.png?x-oss-process=style/demo)
 为了支持单页SPA应用，angular1引入了指令的概念，能够扩展HTML标签并且封装相关的DOM逻辑，以此来构建组件，组件再组合成一个个网页。angular2也保留了指令的概念。那么angular2和1版本的区别在哪里呢？angular2的指令则是简化版的指令API，能通过属性型的指令给DOM标签添加行为。
 
 而与此同时，组件则可以看做指令API的补充，既可以添加模板，也可以添加行为，组件继承自指令。
@@ -59,7 +59,7 @@ export class Tooltip {
 
 浏览器结果
 
-![img](https://images2015.cnblogs.com/blog/1028445/201707/1028445-20170708153549612-1012918620.png)
+![img](https://rzaliyun.oss-cn-beijing.aliyuncs.com/blog/dirty_2.png?x-oss-process=style/demo)
 
 angular1的数据绑定，酷炫而神秘！可是它幕后实际发生了什么呢？
 

@@ -587,7 +587,7 @@
                   <span class="post-meta-item-text">Words count in article&#58;</span>
                 
                 <span title="Words count in article">
-                  1.1k
+                  1k
                 </span>
               
 
@@ -629,10 +629,9 @@
           一: 概念简介 脏值检测，简单的说就是在MVC的构架中，视图会通过模型的change事件来更新自己。
 脏值检测的核心代码是观察者模式的实现，其机制会执行digest循环，在特定UI组件的上下文执行注册的各种表达式。
 那么脏值检测在单页应用扮演了什么角色呢？
- 
-为了支持单页SPA应用，angular1引入了指令的概念，能够扩展HTML标签并且封装相关的DOM逻辑，以此来构建组件，组件再组合成一个个网页。angular2也保留了指令的概念。那么angular2和1版本的区别在哪里呢？angular2的指令则是简化版的指令API，能通过属性型的指令给DOM标签添加行为。
+ 为了支持单页SPA应用，angular1引入了指令的概念，能够扩展HTML标签并且封装相关的DOM逻辑，以此来构建组件，组件再组合成一个个网页。angular2也保留了指令的概念。那么angular2和1版本的区别在哪里呢？angular2的指令则是简化版的指令API，能通过属性型的指令给DOM标签添加行为。
 而与此同时，组件则可以看做指令API的补充，既可以添加模板，也可以添加行为，组件继承自指令。
-123456@Directive(&#123;  selector: &apos;[saTooltip]&apos;&#125;)e
+123456@Directive(&#123;  selector: &apos;[saTooltip]&apos;&#125;)ex
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -828,10 +827,8 @@
 几个简单的模块：
 一条简单的webpack命令：
 一个神奇的bundle.js：
- View Code
-注释太多有点懵逼，可是细看也不就是一个立即执行的函数表达式嘛（IIFE），这是JavaScript中常见的独立作用域的方法。这里我将注释简化一下：
-;)
-1234567891011121314151617181920212223242526272829303132333435363738 1 (function(modules)&#123; 2     //modu
+无非就是一个立即执行的函数表达式嘛（IIFE），这是JavaScript中常见的独立作用域的方法。这里我将注释简化一下：
+1234567891011121314151617181920212223242526272829303132333435363738 1 (function(modules)&#123; 2     //module缓存对象 3     var installedM
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -1025,14 +1022,14 @@
           
           大多数设备的刷新频率是60Hz，也就说是浏览器对每一帧画面的渲染工作要在16ms内完成,超出这个时间，页面的渲染就会出现卡顿现象，影响用户体验。前端的用户体验给了前端直观的印象，因此对B/S架构的开发人员来说，熟悉浏览器的内部执行原理显得尤为重要。
 1. 浏览器主要组成与浏览器线程1.1 浏览器组件浏览器大体上由以下几个组件组成，各个浏览器可能有一点不同。
-
+ 
 
 界面控件 – 包括地址栏，前进后退，书签菜单等窗口上除了网页显示区域以外的部分
 浏览器引擎 – 查询与操作渲染引擎的接口
 渲染引擎 – 负责显示请求的内容。比如请求到HTML, 它会负责解析HTML、CSS并将结果显示到窗口中
 网络 – 用于网络请求, 如HTTP请求。它包括平台无关的接口和各平台独立的实现
 UI后端 – 绘制基础元件，如组合框与窗口。它提供平台无关的接口，内部使用操作系统的相应实现
-JS解释器 - 用于解析执行Ja
+JS解释器 - 用于解析执行J
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -1239,205 +1236,6 @@ JS解释器 - 用于解析执行Ja
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2019/09/16/JavaScript中的LHS和RHS查询/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-    
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-<div>
-    
- </div>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/16/event_loop/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="增">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/blog.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="My notes">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/09/16/event_loop/" itemprop="url">Event Loop</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-09-16T16:18:07+08:00">
-                2019-09-16
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/javascript/" itemprop="url" rel="index">
-                    <span itemprop="name">javascript</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2019/09/16/event_loop/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/09/16/event_loop/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Words count in article&#58;</span>
-                
-                <span title="Words count in article">
-                  4.4k
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Reading time &asymp;</span>
-                
-                <span title="Reading time">
-                  16
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-          前言Event Loop即事件循环，是指浏览器或Node的一种解决javaScript单线程运行时不会阻塞的一种机制，也就是我们经常使用异步的原理。
-堆，栈、队列
-堆（Heap）堆是一种数据结构，是利用完全二叉树维护的一组数据，堆分为两种，一种为最大堆，一种为最小堆，将根节点最大的堆叫做最大堆或大根堆，根节点最小的堆叫做最小堆或小根堆。 堆是线性数据结构，相当于一维数组，有唯一后继。
-如最大堆
-
-栈（Stack）栈在计算机科学中是限定仅在表尾进行插入或删除操作的线性表。  栈是一种数据结构，它按照后进先出的原则存储数据，先进入的数据被压入栈底，最后的数据在栈顶，需要读数据的时候从栈顶开始弹出数据。 栈是只能在某一端插入和删除的特殊线性表。
-
-队列（Queue）特殊之处在于它只允许在表的前端（front）进行删除操作，而在表的后端（rear）进行插入操作，和栈一样，队列是一种操作受限制的线性
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/09/16/event_loop/#more" rel="contents">
               Read more &raquo;
             </a>
           </div>
@@ -1926,7 +1724,7 @@ setTimeout接受两个参数，第一个是要执行的代码或函数，第二�
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-count">7</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -1948,7 +1746,7 @@ setTimeout接受两个参数，第一个是要执行的代码或函数，第二�
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-count">7</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
@@ -2017,7 +1815,7 @@ setTimeout接受两个参数，第一个是要执行的代码或函数，第二�
 </div>
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共20.9k字</span>
+  <span class="post-count">博客全站共16.5k字</span>
 </div>
 
 

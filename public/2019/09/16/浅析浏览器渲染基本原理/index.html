@@ -79,25 +79,25 @@
 
 
 
-<meta name="description" content="大多数设备的刷新频率是60Hz，也就说是浏览器对每一帧画面的渲染工作要在16ms内完成,超出这个时间，页面的渲染就会出现卡顿现象，影响用户体验。前端的用户体验给了前端直观的印象，因此对B/S架构的开发人员来说，熟悉浏览器的内部执行原理显得尤为重要。 1. 浏览器主要组成与浏览器线程1.1 浏览器组件浏览器大体上由以下几个组件组成，各个浏览器可能有一点不同。   界面控件 – 包括地址栏，前进后退，">
+<meta name="description" content="大多数设备的刷新频率是60Hz，也就说是浏览器对每一帧画面的渲染工作要在16ms内完成,超出这个时间，页面的渲染就会出现卡顿现象，影响用户体验。前端的用户体验给了前端直观的印象，因此对B/S架构的开发人员来说，熟悉浏览器的内部执行原理显得尤为重要。 1. 浏览器主要组成与浏览器线程1.1 浏览器组件浏览器大体上由以下几个组件组成，各个浏览器可能有一点不同。    界面控件 – 包括地址栏，前进后退">
 <meta name="keywords" content="浏览器渲染">
 <meta property="og:type" content="article">
 <meta property="og:title" content="浅析浏览器渲染基本原理">
 <meta property="og:url" content="http://yoursite.com/2019/09/16/浅析浏览器渲染基本原理/index.html">
 <meta property="og:site_name" content="My notes">
-<meta property="og:description" content="大多数设备的刷新频率是60Hz，也就说是浏览器对每一帧画面的渲染工作要在16ms内完成,超出这个时间，页面的渲染就会出现卡顿现象，影响用户体验。前端的用户体验给了前端直观的印象，因此对B/S架构的开发人员来说，熟悉浏览器的内部执行原理显得尤为重要。 1. 浏览器主要组成与浏览器线程1.1 浏览器组件浏览器大体上由以下几个组件组成，各个浏览器可能有一点不同。   界面控件 – 包括地址栏，前进后退，">
+<meta property="og:description" content="大多数设备的刷新频率是60Hz，也就说是浏览器对每一帧画面的渲染工作要在16ms内完成,超出这个时间，页面的渲染就会出现卡顿现象，影响用户体验。前端的用户体验给了前端直观的印象，因此对B/S架构的开发人员来说，熟悉浏览器的内部执行原理显得尤为重要。 1. 浏览器主要组成与浏览器线程1.1 浏览器组件浏览器大体上由以下几个组件组成，各个浏览器可能有一点不同。    界面控件 – 包括地址栏，前进后退">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="https://segmentfault.com/img/bV2xGZ?w=400&h=271">
-<meta property="og:image" content="https://segmentfault.com/img/bV2xG3?w=600&h=66">
-<meta property="og:image" content="https://segmentfault.com/img/bV2xG8?w=624&h=289">
-<meta property="og:image" content="https://segmentfault.com/img/bV2xHi?w=500&h=271">
-<meta property="og:image" content="https://segmentfault.com/img/bV2Cd9?w=689&h=112">
-<meta property="og:image" content="https://segmentfault.com/img/bV2xHk?w=500&h=219">
-<meta property="og:updated_time" content="2019-09-16T18:14:36.137Z">
+<meta property="og:image" content="https://rzaliyun.oss-cn-beijing.aliyuncs.com/blog/browser_1.png?x-oss-process=style/demo">
+<meta property="og:image" content="https://rzaliyun.oss-cn-beijing.aliyuncs.com/blog/browser_2.png?x-oss-process=style/demo">
+<meta property="og:image" content="https://rzaliyun.oss-cn-beijing.aliyuncs.com/blog/browser_3.png?x-oss-process=style/demo">
+<meta property="og:image" content="https://rzaliyun.oss-cn-beijing.aliyuncs.com/blog/browser_4.png?x-oss-process=style/demo">
+<meta property="og:image" content="https://rzaliyun.oss-cn-beijing.aliyuncs.com/blog/browser_5.png?x-oss-process=style/demo">
+<meta property="og:image" content="https://rzaliyun.oss-cn-beijing.aliyuncs.com/blog/browser_6.png?x-oss-process=style/demo">
+<meta property="og:updated_time" content="2019-09-17T08:40:59.409Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="浅析浏览器渲染基本原理">
-<meta name="twitter:description" content="大多数设备的刷新频率是60Hz，也就说是浏览器对每一帧画面的渲染工作要在16ms内完成,超出这个时间，页面的渲染就会出现卡顿现象，影响用户体验。前端的用户体验给了前端直观的印象，因此对B/S架构的开发人员来说，熟悉浏览器的内部执行原理显得尤为重要。 1. 浏览器主要组成与浏览器线程1.1 浏览器组件浏览器大体上由以下几个组件组成，各个浏览器可能有一点不同。   界面控件 – 包括地址栏，前进后退，">
-<meta name="twitter:image" content="https://segmentfault.com/img/bV2xGZ?w=400&h=271">
+<meta name="twitter:description" content="大多数设备的刷新频率是60Hz，也就说是浏览器对每一帧画面的渲染工作要在16ms内完成,超出这个时间，页面的渲染就会出现卡顿现象，影响用户体验。前端的用户体验给了前端直观的印象，因此对B/S架构的开发人员来说，熟悉浏览器的内部执行原理显得尤为重要。 1. 浏览器主要组成与浏览器线程1.1 浏览器组件浏览器大体上由以下几个组件组成，各个浏览器可能有一点不同。    界面控件 – 包括地址栏，前进后退">
+<meta name="twitter:image" content="https://rzaliyun.oss-cn-beijing.aliyuncs.com/blog/browser_1.png?x-oss-process=style/demo">
 
 
 
@@ -434,7 +434,7 @@
       
         <p>大多数设备的刷新频率是60Hz，也就说是浏览器对每一帧画面的渲染工作要在16ms内完成,超出这个时间，页面的渲染就会出现卡顿现象，影响用户体验。前端的用户体验给了前端直观的印象，因此对B/S架构的开发人员来说，熟悉浏览器的内部执行原理显得尤为重要。</p>
 <h2 id="1-浏览器主要组成与浏览器线程"><a href="#1-浏览器主要组成与浏览器线程" class="headerlink" title="1. 浏览器主要组成与浏览器线程"></a>1. 浏览器主要组成与浏览器线程</h2><h3 id="1-1-浏览器组件"><a href="#1-1-浏览器组件" class="headerlink" title="1.1 浏览器组件"></a>1.1 浏览器组件</h3><p>浏览器大体上由以下几个组件组成，各个浏览器可能有一点不同。</p>
-<p><img src="https://segmentfault.com/img/bV2xGZ?w=400&amp;h=271" alt="clipboard.png"></p>
+<p> <img src="https://rzaliyun.oss-cn-beijing.aliyuncs.com/blog/browser_1.png?x-oss-process=style/demo" alt="img"></p>
 <ul>
 <li><strong>界面控件</strong> – 包括地址栏，前进后退，书签菜单等窗口上除了网页显示区域以外的部分</li>
 <li><strong>浏览器引擎</strong> – 查询与操作渲染引擎的接口</li>
@@ -455,8 +455,8 @@
 <li>异步http请求线程<br>在XMLHttpRequest在连接后是通过浏览器新开一个线程请求，将检测到状态变更时，如果设置有回调函数，异步线程就产生状态变更事件放到JS引擎的处理队列中等待处理。</li>
 </ol>
 <h2 id="2-渲染过程"><a href="#2-渲染过程" class="headerlink" title="2. 渲染过程"></a>2. 渲染过程</h2><h3 id="2-1-渲染流程"><a href="#2-1-渲染流程" class="headerlink" title="2.1 渲染流程"></a>2.1 渲染流程</h3><p>用户请求的HTML文本(text/html)通过浏览器的网络层到达渲染引擎后，渲染工作开始。每次通常渲染不会超过8K的数据块，其中基础的渲染流程图：</p>
-<p><img src="https://segmentfault.com/img/bV2xG3?w=600&amp;h=66" alt="clipboard.png"></p>
-<p>webkit引擎渲染的详细流程，其他引擎渲染流程<a href="https://www.html5rocks.com/zh/tutorials/internals/howbrowserswork/#Main_flow_examples" target="_blank" rel="noopener">稍有不同</a>：<br><img src="https://segmentfault.com/img/bV2xG8?w=624&amp;h=289" alt="clipboard.png"></p>
+<p><img src="https://rzaliyun.oss-cn-beijing.aliyuncs.com/blog/browser_2.png?x-oss-process=style/demo" alt="img"></p>
+<p>webkit引擎渲染的详细流程，其他引擎渲染流程<a href="https://www.html5rocks.com/zh/tutorials/internals/howbrowserswork/#Main_flow_examples" target="_blank" rel="noopener">稍有不同</a>：<br><img src="https://rzaliyun.oss-cn-beijing.aliyuncs.com/blog/browser_3.png?x-oss-process=style/demo" alt="img"></p>
 <p>渲染流程有四个主要步骤：</p>
 <ol>
 <li><strong>解析HTML生成DOM树</strong> - 渲染引擎首先解析HTML文档，生成DOM树</li>
@@ -471,7 +471,7 @@
 <p>可以这么说，没有DOM树就没有Render树，但是它们之间不是简单的一对一的关系。Render树是用于显示，那不可见的元素当然不会在这棵树中出现了，譬如<code>&lt;head&gt;</code>。除此之外，display等于none的也不会被显示在这棵树里头，但是visibility等于hidden的元素是会显示在这棵树里头的。</p>
 <h4 id="3-DOM树与Render树"><a href="#3-DOM树与Render树" class="headerlink" title="3. DOM树与Render树"></a>3. DOM树与Render树</h4><p>DOM对象类型很丰富，什么head、title、div，而Render树相对来说就比较单一了，毕竟它的职责就是为了以后的显示渲染用嘛。Render树的每一个节点我们叫它渲染器renderer。</p>
 <p>一棵Render树大概是酱紫，左边是DOM树，右边是Render树：</p>
-<p><img src="https://segmentfault.com/img/bV2xHi?w=500&amp;h=271" alt="clipboard.png"></p>
+<p><img src="https://rzaliyun.oss-cn-beijing.aliyuncs.com/blog/browser_4.png?x-oss-process=style/demo" alt="img"></p>
 <p>从上图我们可以看出，renderer与DOM元素是相对应的，但并不是一一对应，有些DOM元素没有对应的renderer，而有些DOM元素却对应了好几个renderer，对应多个renderer的情况是普遍存在的，就是为了解决一个renderer描述不清楚如何显示出来的问题，譬如有下拉列表的select元素，我们就需要三个renderer：一个用于显示区域，一个用于下拉列表框，还有一个用于按钮。</p>
 <p>另外，renderer与DOM元素的位置也可能是不一样的。那些添加了<code>float</code>或者<code>position:absolute</code>的元素，因为它们脱离了正常的文档流，构造Render树的时候会针对它们实际的位置进行构造。</p>
 <h4 id="4-布局与绘制"><a href="#4-布局与绘制" class="headerlink" title="4. 布局与绘制"></a>4. 布局与绘制</h4><p>上面确定了renderer的样式规则后，然后就是重要的显示元素布局了。当renderer构造出来并添加到Render树上之后，它并没有位置跟大小信息，为它确定这些信息的过程，接下来是<strong>布局</strong>(layout)。</p>
@@ -527,7 +527,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;script async&gt;console.log(&quot;1&quot;)&lt;/script&gt;</span><br><span class="line">&lt;script defer&gt;console.log(&quot;2&quot;)&lt;/script&gt;</span><br><span class="line">&lt;script&gt;console.log(&quot;3&quot;)&lt;/script&gt;</span><br></pre></td></tr></table></figure>
 <p>上面脚本会按需输出 1 2 3，故，下面两节讨论的内容都是针对设置了 src 属性的 script 标签。</p>
 <p>先放个熟悉的图~</p>
-<p><img src="https://segmentfault.com/img/bV2Cd9?w=689&amp;h=112" alt="clipboard.png"></p>
+<p><img src="https://rzaliyun.oss-cn-beijing.aliyuncs.com/blog/browser_5.png?x-oss-process=style/demo" alt="img"></p>
 <p>蓝色线代表网络读取，红色线代表执行时间，这俩都是针对脚本的；绿色线代表 HTML 解析。</p>
 <h4 id="defer"><a href="#defer" class="headerlink" title="defer"></a>defer</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;script src=&quot;app1.js&quot; defer&gt;&lt;/script&gt;</span><br><span class="line">&lt;script src=&quot;app2.js&quot; defer&gt;&lt;/script&gt;</span><br><span class="line">&lt;script src=&quot;app3.js&quot; defer&gt;&lt;/script&gt;</span><br></pre></td></tr></table></figure>
 <p>defer 属性表示延迟执行引入 JavaScript，即 JavaScript 加载时 HTML 并未停止解析，这两个过程是并行的。整个 document 解析完毕且 defer-script 也加载完成之后（这两件事情的顺序无关），会执行所有由 defer-script 加载的 JavaScript 代码，再触发<code>DOMContentLoaded</code>(初始的 HTML 文档被完全加载和解析完成之后触发，<a href="https://developer.mozilla.org/zh-CN/docs/Web/Events/DOMContentLoaded" target="_blank" rel="noopener">无需等待样式表图像和子框架的完成加载</a>) 事件。</p>
@@ -551,7 +551,7 @@
 </ol>
 <p>这里主要参考Google的浏览器<a href="https://developers.google.com/web/fundamentals/performance/rendering/" target="_blank" rel="noopener">渲染性能</a>的基础讲座，想看更详细内容可以去瞅瞅~</p>
 <h3 id="4-1-优化JS的执行效率"><a href="#4-1-优化JS的执行效率" class="headerlink" title="4.1 优化JS的执行效率"></a>4.1 优化JS的执行效率</h3><h4 id="1-动画实现使用requestAnimationFrame"><a href="#1-动画实现使用requestAnimationFrame" class="headerlink" title="1. 动画实现使用requestAnimationFrame"></a>1. 动画实现使用requestAnimationFrame</h4><p>setTimeout(callback)和setInterval(callback)无法保证callback函数的执行时机，很可能在帧结束的时候执行，从而导致丢帧，如下图：</p>
-<p><img src="https://segmentfault.com/img/bV2xHk?w=500&amp;h=219" alt="clipboard.png"></p>
+<p><img src="https://rzaliyun.oss-cn-beijing.aliyuncs.com/blog/browser_6.png?x-oss-process=style/demo" alt="img"></p>
 <p><code>requestAnimationFrame(callback)</code>可以保证callback函数在每帧动画开始的时候执行。<br>注意：jQuery3.0.0以前版本的animate函数就是用setTimeout来实现动画，可以通过<a href="https://github.com/gnarf/jquery-requestAnimationFrame" target="_blank" rel="noopener">jquery-requestAnimationFrame</a>这个补丁来用requestAnimationFrame替代setTimeout</p>
 <h4 id="2-长耗时的JS代码放到Web-Workers中执行"><a href="#2-长耗时的JS代码放到Web-Workers中执行" class="headerlink" title="2. 长耗时的JS代码放到Web Workers中执行"></a>2. 长耗时的JS代码放到Web Workers中执行</h4><p>JS代码运行在浏览器的主线程上，与此同时，浏览器的主线程还负责样式计算、布局、绘制的工作，如果JavaScript代码运行时间过长，就会阻塞其他渲染工作，很可能会导致丢帧。<br>前面提到每帧的渲染应该在16ms内完成，但在动画过程中，由于已经被占用了不少时间，所以JavaScript代码运行耗时应该控制在3-4毫秒。<br>如果真的有特别耗时且不操作DOM元素的纯计算工作，可以考虑放到Web Workers中执行。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">var dataSortWorker = new Worker(&quot;sort-worker.js&quot;);</span><br><span class="line">dataSortWorker.postMesssage(dataToSort);</span><br><span class="line"></span><br><span class="line">// 主线程不受Web Workers线程干扰</span><br><span class="line">dataSortWorker.addEventListener(&apos;message&apos;, function(evt) &#123;</span><br><span class="line">    var sortedData = e.data;</span><br><span class="line"></span><br><span class="line">    // Web Workers线程执行结束</span><br><span class="line">    // ...</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
@@ -639,7 +639,7 @@
   <p><span>本文标题:</span><a href="/2019/09/16/浅析浏览器渲染基本原理/">浅析浏览器渲染基本原理</a></p>
   <p><span>文章作者:</span><a href="/" title="访问 增 的个人博客">增</a></p>
   <p><span>发布时间:</span>2019年09月16日 - 21:03</p>
-  <p><span>最后更新:</span>2019年09月17日 - 02:14</p>
+  <p><span>最后更新:</span>2019年09月17日 - 16:40</p>
   <p><span>原始链接:</span><a href="/2019/09/16/浅析浏览器渲染基本原理/" title="浅析浏览器渲染基本原理">http://yoursite.com/2019/09/16/浅析浏览器渲染基本原理/</a>
     <span class="copy-path" title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://yoursite.com/2019/09/16/浅析浏览器渲染基本原理/" aria-label="复制成功！"></i></span>
   </p>
@@ -791,7 +791,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-count">7</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -813,7 +813,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-count">7</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
@@ -898,7 +898,7 @@
 </div>
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共20.9k字</span>
+  <span class="post-count">博客全站共16.5k字</span>
 </div>
 
 
