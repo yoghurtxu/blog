@@ -87,12 +87,12 @@
 <meta property="og:site_name" content="My notes">
 <meta property="og:description" content="问题来源于《你不知道的JavaScript（上卷）》，文章部分论述截自原书。 简述编译原理JavaScript通常会被归类为“动态”或“解释执行”语言，但事实上它是一门编译语言。但与传统的编译语言不同，它不是提前编译的，编译结果也不能在分布式系统上进行移植。 在传统编译语言的流程中，程序中的一段源代码在执行前会经历三个步骤，统称为“编译”。  分词 / 词法分析 解析 / 语法分析 代码生成  与">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="https://rzaliyun.oss-cn-beijing.aliyuncs.com/blog/LHS.png?x-oss-process=style/demo">
-<meta property="og:updated_time" content="2020-05-09T05:48:37.872Z">
+<meta property="og:image" content="https://img-blog.csdn.net/20180328115116797?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3p3a2trazE=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70">
+<meta property="og:updated_time" content="2020-05-09T06:23:20.931Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JavaScript中的LHS和RHS查询">
 <meta name="twitter:description" content="问题来源于《你不知道的JavaScript（上卷）》，文章部分论述截自原书。 简述编译原理JavaScript通常会被归类为“动态”或“解释执行”语言，但事实上它是一门编译语言。但与传统的编译语言不同，它不是提前编译的，编译结果也不能在分布式系统上进行移植。 在传统编译语言的流程中，程序中的一段源代码在执行前会经历三个步骤，统称为“编译”。  分词 / 词法分析 解析 / 语法分析 代码生成  与">
-<meta name="twitter:image" content="https://rzaliyun.oss-cn-beijing.aliyuncs.com/blog/LHS.png?x-oss-process=style/demo">
+<meta name="twitter:image" content="https://img-blog.csdn.net/20180328115116797?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3p3a2trazE=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70">
 
 
 
@@ -366,7 +366,7 @@
 <p>   <code>LHS</code> 和 <code>RHS</code> 查询都会在当前执行作用域中开始，如果有需要（也就是说他们没有找到所需的标识符），就会向上级作用域继续查找目标标识符，这样每次上升一次作用域，最后抵达全局作用域，无论找到或没找到都将停止。</p>
 <p>   借用书中的一张图，将作用域链比喻成一个建筑，在对上面的论述进行一次转换。</p>
 <p>   （对作用域链的具体介绍可以移步 <a href="https://blog.csdn.net/zwkkkk1/article/details/79767681" target="_blank" rel="noopener">理解 JavaScript 的作用域链</a>）</p>
-<p>   <img src="https://rzaliyun.oss-cn-beijing.aliyuncs.com/blog/LHS.png?x-oss-process=style/demo" alt="img"></p>
+<p>   <img src="https://img-blog.csdn.net/20180328115116797?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3p3a2trazE=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="img"></p>
 <p>   这个建筑代表储蓄中的嵌套作用域链。第一层楼代表当前的执行作用域，也就是你所在的位置。建筑的顶层代表全局作用域。</p>
 <p>   LHS 和 RHS 引用都会在当前楼层进行查找，如果没有找到，就会坐电梯前往上一层楼，如果还是没有找到就继续向上，以此类推。一旦抵达顶层（全局作用域），可能找到了你所需的变量，也可能没找到，但无论如何查找过程都将停止。<br>   <strong>总结:不成功的RHS引用会导致抛出 ReferenceError 异常。不成功的LHS引用会导致自动隐式地创建一个全局变量</strong>（<strong>非严格模式下</strong>），该变量使用LHS引用的目标作为标识符，或者抛出 <code>ReferenceError 异常</code>（<strong>严格模式下</strong>）。</p>
 
@@ -399,8 +399,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/09/16/谈谈setTimeout的作用域以及this的指向问题/" rel="next" title="谈谈setTimeout的作用域以及this的指向问题">
-                <i class="fa fa-chevron-left"></i> 谈谈setTimeout的作用域以及this的指向问题
+              <a href="/2019/09/16/event_loop/" rel="next" title="Event Loop">
+                <i class="fa fa-chevron-left"></i> Event Loop
               </a>
             
           </div>
@@ -488,7 +488,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
