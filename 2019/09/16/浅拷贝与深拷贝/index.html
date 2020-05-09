@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="浅拷贝与深拷贝,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="JS 中有一些基本类型像是Number、String、Boolean，而对象就是像这样的东西{ name: ‘Larry’, skill: ‘Node.js’ }，对象跟基本类型最大的不同就在于他们的传值方式。 基本类型是按值传递，像是这样：在修改a时并不会改到b 12345var a = 25;var b = a;b = 18;console.log(a);//25console.log(b)">
+<meta name="keywords" content="浅拷贝与深拷贝">
+<meta property="og:type" content="article">
+<meta property="og:title" content="浅拷贝与深拷贝">
+<meta property="og:url" content="http://yoursite.com/2019/09/16/浅拷贝与深拷贝/index.html">
+<meta property="og:site_name" content="My notes">
+<meta property="og:description" content="JS 中有一些基本类型像是Number、String、Boolean，而对象就是像这样的东西{ name: ‘Larry’, skill: ‘Node.js’ }，对象跟基本类型最大的不同就在于他们的传值方式。 基本类型是按值传递，像是这样：在修改a时并不会改到b 12345var a = 25;var b = a;b = 18;console.log(a);//25console.log(b)">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9pbWFnZXMyMDE1LmNuYmxvZ3MuY29tL2Jsb2cvMTAwNTM1NC8yMDE2MTIvMTAwNTM1NC0yMDE2MTIyNDE2MjU1ODU4OS0zMTk4MjM5NS5wbmc?x-oss-process=image/format,png">
+<meta property="og:image" content="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==">
+<meta property="og:image" content="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9pbWFnZXMyMDE1LmNuYmxvZ3MuY29tL2Jsb2cvMTAwNTM1NC8yMDE2MTIvMTAwNTM1NC0yMDE2MTIyNDE5MDExNjk0OC0xOTEwNzg2ODI5LnBuZw?x-oss-process=image/format,png">
+<meta property="og:image" content="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==">
+<meta property="og:image" content="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9pbWFnZXMyMDE1LmNuYmxvZ3MuY29tL2Jsb2cvMTAwNTM1NC8yMDE2MTIvMTAwNTM1NC0yMDE2MTIyNDE5MTAzMzA3My0zNjE1NjE2NjkucG5n?x-oss-process=image/format,png">
+<meta property="og:image" content="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==">
+<meta property="og:updated_time" content="2020-05-09T04:49:33.371Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="浅拷贝与深拷贝">
+<meta name="twitter:description" content="JS 中有一些基本类型像是Number、String、Boolean，而对象就是像这样的东西{ name: ‘Larry’, skill: ‘Node.js’ }，对象跟基本类型最大的不同就在于他们的传值方式。 基本类型是按值传递，像是这样：在修改a时并不会改到b 12345var a = 25;var b = a;b = 18;console.log(a);//25console.log(b)">
+<meta name="twitter:image" content="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9pbWFnZXMyMDE1LmNuYmxvZ3MuY29tL2Jsb2cvMTAwNTM1NC8yMDE2MTIvMTAwNTM1NC0yMDE2MTIyNDE2MjU1ODU4OS0zMTk4MjM5NS5wbmc?x-oss-process=image/format,png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/09/16/浅拷贝与深拷贝/">
+
+
+
+
+
+  <title>浅拷贝与深拷贝 | My notes</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">My notes</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/16/浅拷贝与深拷贝/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="增">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="My notes">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">浅拷贝与深拷贝</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-09-16T11:50:03+08:00">
+                2019-09-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/javascript/" itemprop="url" rel="index">
+                    <span itemprop="name">javascript</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p> JS 中有一些基本类型像是<code>Number</code>、<code>String</code>、<code>Boolean，</code>而对象就是像这样的东西{ name: ‘Larry’, skill: ‘Node.js’ }，对象跟基本类型最大的不同就在于他们的传值方式。</p>
+<p>基本类型是按值传递，像是这样：在修改<code>a</code>时并不会改到<code>b</code></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">25</span>;</span><br><span class="line"><span class="keyword">var</span> b = a;</span><br><span class="line">b = <span class="number">18</span>;</span><br><span class="line"><span class="built_in">console</span>.log(a);<span class="comment">//25</span></span><br><span class="line"><span class="built_in">console</span>.log(b);<span class="comment">//18</span></span><br></pre></td></tr></table></figure>
+<p>但对象就不同，对象传的是按引用传值：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj1 = &#123; <span class="attr">a</span>: <span class="number">10</span>, <span class="attr">b</span>: <span class="number">20</span>, <span class="attr">c</span>: <span class="number">30</span> &#125;;</span><br><span class="line"><span class="keyword">var</span> obj2 = obj1;</span><br><span class="line">obj2.b = <span class="number">100</span>;</span><br><span class="line"><span class="built_in">console</span>.log(obj1);<span class="comment">// &#123; a: 10, b: 100, c: 30 &#125;, b 被改到了</span></span><br><span class="line"><span class="built_in">console</span>.log(obj2);<span class="comment">// &#123; a: 10, b: 100, c: 30 &#125;</span></span><br></pre></td></tr></table></figure>
+<p>复制一份<code>obj1</code>叫做<code>obj2，</code>然后把<code>obj2.b</code>改成<code>100，</code>但却不小心改到<code>obj1.b，</code>因为他们根本是同一个对象，这就是所谓的浅拷贝。</p>
+<p>要避免这样的错误发生就要写成这样：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj1 = &#123; <span class="attr">a</span>: <span class="number">10</span>, <span class="attr">b</span>: <span class="number">20</span>, <span class="attr">c</span>: <span class="number">30</span> &#125;;</span><br><span class="line"><span class="keyword">var</span> obj2 = &#123; <span class="attr">a</span>: obj1.a, <span class="attr">b</span>: obj1.b, <span class="attr">c</span>: obj1.c &#125;;</span><br><span class="line">obj2.b = <span class="number">100</span>;</span><br><span class="line"><span class="built_in">console</span>.log(obj1);<span class="comment">// &#123; a: 10, b: 20, c: 30 &#125;, b 沒被改到</span></span><br><span class="line"><span class="built_in">console</span>.log(obj2);<span class="comment">// &#123; a: 10, b: 100, c: 30 &#125;</span></span><br></pre></td></tr></table></figure>
+<p>这样就是深拷贝，不会改到原本的<code>obj1。</code></p>
+<h2 id="浅拷贝-Shallow-Copy-VS-深拷贝-Deep-Copy"><a href="#浅拷贝-Shallow-Copy-VS-深拷贝-Deep-Copy" class="headerlink" title="浅拷贝(Shallow Copy) VS 深拷贝(Deep Copy)"></a><strong>浅拷贝(Shallow Copy) VS 深拷贝(Deep Copy)</strong></h2><p><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9pbWFnZXMyMDE1LmNuYmxvZ3MuY29tL2Jsb2cvMTAwNTM1NC8yMDE2MTIvMTAwNTM1NC0yMDE2MTIyNDE2MjU1ODU4OS0zMTk4MjM5NS5wbmc?x-oss-process=image/format,png" alt="img"><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="Click and drag to move"></p>
+<p>浅拷贝只复制指向某个对象的指针，而不复制对象本身，新旧对象还是共享同一块内存。但深拷贝会另外创造一个一模一样的对象，新对象跟原对象不共享内存，修改新对象不会改到原对象。</p>
+<h2 id="浅拷贝的实现方式"><a href="#浅拷贝的实现方式" class="headerlink" title="浅拷贝的实现方式"></a>浅拷贝的实现方式</h2><p>也就是简单地复制而已</p>
+<p><strong>1、简单地复制语句</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">simpleClone</span>(<span class="params">initalObj</span>) </span>&#123;</span><br><span class="line">      <span class="keyword">var</span> obj = &#123;&#125;;</span><br><span class="line">      <span class="keyword">for</span> (<span class="keyword">var</span> i <span class="keyword">in</span> initalObj) &#123;</span><br><span class="line">          obj[i] = initalObj[i];</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">return</span> obj;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">var</span> obj = &#123;</span><br><span class="line">      a: <span class="string">"hello"</span>, <span class="attr">b</span>: &#123;<span class="attr">a</span>: <span class="string">"world"</span>, <span class="attr">b</span>: <span class="number">21</span>&#125;, <span class="attr">c</span>: [<span class="string">"Bob"</span>, <span class="string">"Tom"</span>, <span class="string">"Jenny"</span>], </span><br><span class="line">      d: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">          alert(<span class="string">"hello world"</span>);</span><br><span class="line">      &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">var</span> cloneObj = simpleClone(obj);</span><br><span class="line">  <span class="built_in">console</span>.log(cloneObj.b);</span><br><span class="line">  <span class="built_in">console</span>.log(cloneObj.c);</span><br><span class="line">  <span class="built_in">console</span>.log(cloneObj.d);</span><br><span class="line">  cloneObj.b.a = <span class="string">"changed"</span>;</span><br><span class="line">  cloneObj.c = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>];</span><br><span class="line">  cloneObj.d = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">      alert(<span class="string">"changed"</span>);</span><br><span class="line">  &#125;;</span><br><span class="line">  <span class="built_in">console</span>.log(obj.b);</span><br><span class="line">  <span class="built_in">console</span>.log(obj.c);</span><br><span class="line">  <span class="built_in">console</span>.log(obj.d);</span><br></pre></td></tr></table></figure>
+<p>结果为：</p>
+<p><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9pbWFnZXMyMDE1LmNuYmxvZ3MuY29tL2Jsb2cvMTAwNTM1NC8yMDE2MTIvMTAwNTM1NC0yMDE2MTIyNDE5MDExNjk0OC0xOTEwNzg2ODI5LnBuZw?x-oss-process=image/format,png" alt="img"><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="Click and drag to move"></p>
+<p><strong>2、Object.assign()</strong></p>
+<p><code>Object.assign是ES6的新函数。Object.assign()</code> 方法可以把任意多个的源对象自身的可枚举属性拷贝给目标对象，然后返回目标对象。但是 <code>Object.assign()</code> 进行的是浅拷贝，拷贝的是对象的属性的引用，而不是对象本身。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Object</span>.assign(target, ...sources)</span><br></pre></td></tr></table></figure>
+<p>参数：</p>
+<p>target：目标对象。<br>sources：任意多个源对象。<br>返回值：目标对象会被返回。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = &#123; <span class="attr">a</span>: &#123;<span class="attr">a</span>: <span class="string">"hello"</span>, <span class="attr">b</span>: <span class="number">21</span>&#125; &#125;;</span><br><span class="line"><span class="keyword">var</span> initalObj = <span class="built_in">Object</span>.assign(&#123;&#125;, obj);</span><br><span class="line">initalObj.a.a = <span class="string">"changed"</span>;</span><br><span class="line"><span class="built_in">console</span>.log(obj.a.a); <span class="comment">// "changed"</span></span><br></pre></td></tr></table></figure>
+<p>兼容性：</p>
+<p><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9pbWFnZXMyMDE1LmNuYmxvZ3MuY29tL2Jsb2cvMTAwNTM1NC8yMDE2MTIvMTAwNTM1NC0yMDE2MTIyNDE5MTAzMzA3My0zNjE1NjE2NjkucG5n?x-oss-process=image/format,png" alt="img"><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="Click and drag to move"></p>
+<p>需要注意的是：</p>
+<p>Object.assign()可以处理一层的深度拷贝，如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj1 = &#123;<span class="attr">a</span>: <span class="number">10</span>, <span class="attr">b</span>: <span class="number">20</span>, <span class="attr">c</span>: <span class="number">30</span>&#125;;</span><br><span class="line"><span class="keyword">var</span> obj2 = <span class="built_in">Object</span>.assign(&#123;&#125;, obj1);</span><br><span class="line">obj2.b = <span class="number">100</span>;</span><br><span class="line"><span class="built_in">console</span>.log(obj1);<span class="comment">// &#123; a: 10, b: 20, c: 30 &#125; , 沒被改到</span></span><br><span class="line"><span class="built_in">console</span>.log(obj2); <span class="comment">// &#123; a: 10, b: 100, c: 30 &#125;</span></span><br></pre></td></tr></table></figure>
+<h2 id="深拷贝的实现方式"><a href="#深拷贝的实现方式" class="headerlink" title="深拷贝的实现方式"></a>深拷贝的实现方式</h2><p>要完全复制又不能修改到原对象，这时候就要用 Deep Copy，这里会介绍几种Deep Copy 的方式。</p>
+<p><strong>1、手动复制</strong></p>
+<p>把一个对象的属性复制给另一个对象的属性</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj1 = &#123; <span class="attr">a</span>: <span class="number">10</span>, <span class="attr">b</span>: <span class="number">20</span>, <span class="attr">c</span>: <span class="number">30</span> &#125;;</span><br><span class="line"><span class="keyword">var</span> obj2 = &#123; <span class="attr">a</span>: obj1.a, <span class="attr">b</span>: obj1.b, <span class="attr">c</span>: obj1.c &#125;;</span><br><span class="line">obj2.b = <span class="number">100</span>;</span><br><span class="line"><span class="built_in">console</span>.log(obj1);<span class="comment">// &#123; a: 10, b: 20, c: 30 &#125;, 沒被改到</span></span><br><span class="line"><span class="built_in">console</span>.log(obj2);<span class="comment">// &#123; a: 10, b: 100, c: 30 &#125;</span></span><br></pre></td></tr></table></figure>
+<p>但这样很麻烦，要一个一个自己复制；而且这样的本质也不能算是 Deep Copy，因为对象里面也可能回事对象，如像下面这个状况：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj1 = &#123; <span class="attr">body</span>: &#123; <span class="attr">a</span>: <span class="number">10</span> &#125; &#125;;</span><br><span class="line"><span class="keyword">var</span> obj2 = &#123; <span class="attr">body</span>: obj1.body &#125;;</span><br><span class="line">obj2.body.a = <span class="number">20</span>;</span><br><span class="line"><span class="built_in">console</span>.log(obj1);<span class="comment">// &#123; body: &#123; a: 20 &#125; &#125;,被改到了</span></span><br><span class="line"><span class="built_in">console</span>.log(obj2);<span class="comment">// &#123; body: &#123; a: 20 &#125; &#125;</span></span><br><span class="line"><span class="built_in">console</span>.log(obj1 === obj2); <span class="comment">// false</span></span><br><span class="line"><span class="built_in">console</span>.log(obj1.body === obj2.body); <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+<p>虽然<code>obj1</code>跟<code>obj2</code>是不同对象，但他们会共享同一个<code>obj1.body</code>，所以修改<code>obj2.body.a</code>时也会修改到旧的。</p>
+<p><strong>2、对象只有一层的话可以使用上面的：Object.assign()函数</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Object.assign(&#123;&#125;, obj1)`的意思是先建立一个空对象&#123;&#125;，接着把`obj1`中所有的属性复制过去，所以`obj2`会长得跟`obj1`一样，这时候再修改`obj2.b`也不会影响`obj1。</span><br></pre></td></tr></table></figure>
+<p>因为<code>Object.assign</code>跟我们手动复制的效果相同，所以一样只能处理深度只有一层的对象，没办法做到真正的 Deep Copy。不过如果要复制的对象只有一层的话可以考虑使用它。</p>
+<p><strong>3、转成 JSON 再转回来</strong></p>
+<p>用<code>JSON.stringify</code>把对象转成字符串，再用<code>JSON.parse</code>把字符串转成新的对象。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj1 = &#123; <span class="attr">body</span>: &#123; <span class="attr">a</span>: <span class="number">10</span> &#125; &#125;;</span><br><span class="line"><span class="keyword">var</span> obj2 = <span class="built_in">JSON</span>.parse(<span class="built_in">JSON</span>.stringify(obj1));</span><br><span class="line">obj2.body.a = <span class="number">20</span>;</span><br><span class="line">;<span class="built_in">console</span>.log(obj1);<span class="comment">// &#123; body: &#123; a: 10 &#125; &#125; //沒被改到</span></span><br><span class="line"><span class="built_in">console</span>.log(obj2);<span class="comment">// &#123; body: &#123; a: 20 &#125; &#125;</span></span><br><span class="line"><span class="built_in">console</span>.log(obj1 === obj2);<span class="comment">// false</span></span><br><span class="line"><span class="built_in">console</span>.log(obj1.body === obj2.body);<span class="comment">// false </span></span><br><span class="line"><span class="comment">//这样做是真正的Deep Copy，这种方法简单易用。</span></span><br></pre></td></tr></table></figure>
+<p>但是这种方法也有不少坏处，譬如它会抛弃对象的constructor。也就是深拷贝之后，不管这个对象原来的构造函数是什么，在深拷贝之后都会变成Object。</p>
+<p>这种方法能正确处理的对象只有 <code>Number, String, Boolean, Array, 扁平对象</code>，即那些能够被 json 直接表示的数据结构。RegExp对象是无法通过这种方式深拷贝。</p>
+<p>也就是说，只有可以转成<code>JSON</code>格式的对象才可以这样用，像<code>function</code>没办法转成<code>JSON。</code></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj1 = &#123; <span class="attr">fun</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123; <span class="built_in">console</span>.log(<span class="number">123</span>) &#125; &#125;;</span><br><span class="line"><span class="keyword">var</span> obj2 = <span class="built_in">JSON</span>.parse(<span class="built_in">JSON</span>.stringify(obj1));</span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> obj1.fun);<span class="comment">// 'function'</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> obj2.fun);<span class="comment">// 'undefined', 没复制</span></span><br></pre></td></tr></table></figure>
+<p>要复制的<code>function</code>会直接消失，所以这个方法只能用在单纯只有数据的对象。</p>
+<p><strong>4、递归拷贝</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">deepClone</span>(<span class="params">initalObj, finalObj</span>) </span>&#123;</span><br><span class="line">       <span class="keyword">var</span> obj = finalObj || &#123;&#125;;</span><br><span class="line">       <span class="keyword">for</span> (<span class="keyword">var</span> i <span class="keyword">in</span> initalObj) &#123;</span><br><span class="line">           <span class="keyword">if</span> (<span class="keyword">typeof</span> initalObj[i] === <span class="string">'object'</span>) &#123;</span><br><span class="line">               obj[i] = (initalObj[i].constructor === <span class="built_in">Array</span>) ? [] : &#123;&#125;;</span><br><span class="line">               <span class="built_in">arguments</span>.callee(initalObj[i], obj[i]);</span><br><span class="line">           &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">               obj[i] = initalObj[i];</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="keyword">return</span> obj;</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="keyword">var</span> str = &#123;&#125;;</span><br><span class="line">   <span class="keyword">var</span> obj = &#123;<span class="attr">a</span>: &#123;<span class="attr">a</span>: <span class="string">"hello"</span>, <span class="attr">b</span>: <span class="number">21</span>&#125;&#125;;</span><br><span class="line">   deepClone(obj, str);</span><br><span class="line">   <span class="built_in">console</span>.log(str.a);</span><br></pre></td></tr></table></figure>
+<p>上述代码确实可以实现深拷贝。但是当遇到两个互相引用的对象，会出现死循环的情况。</p>
+<p>为了避免相互引用的对象导致死循环的情况，则应该在遍历的时候判断是否相互引用对象，如果是则退出循环。</p>
+<p>改进版代码如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">deepClone</span>(<span class="params">initalObj, finalObj</span>) </span>&#123;</span><br><span class="line">       <span class="keyword">var</span> obj = finalObj || &#123;&#125;;</span><br><span class="line">       <span class="keyword">for</span> (<span class="keyword">var</span> i <span class="keyword">in</span> initalObj) &#123;</span><br><span class="line">           <span class="keyword">var</span> prop = initalObj[i]; <span class="comment">// 避免相互引用对象导致死循环，如initalObj.a = initalObj的情况  </span></span><br><span class="line">           <span class="keyword">if</span> (prop === obj) &#123;</span><br><span class="line">               <span class="keyword">continue</span>;</span><br><span class="line">           &#125;</span><br><span class="line">           <span class="keyword">if</span> (<span class="keyword">typeof</span> prop === <span class="string">'object'</span>) &#123;</span><br><span class="line">               obj[i] = (prop.constructor === <span class="built_in">Array</span>) ? [] : &#123;&#125;;</span><br><span class="line">               <span class="built_in">arguments</span>.callee(prop, obj[i]);</span><br><span class="line">           &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">               obj[i] = prop;</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="keyword">return</span> obj;</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">var</span> str = &#123;&#125;;</span><br><span class="line">   <span class="keyword">var</span> obj = &#123;<span class="attr">a</span>: &#123;<span class="attr">a</span>: <span class="string">"hello"</span>, <span class="attr">b</span>: <span class="number">21</span>&#125;&#125;;</span><br><span class="line">   deepClone(obj, str);</span><br><span class="line">   <span class="built_in">console</span>.log(str.a);</span><br></pre></td></tr></table></figure>
+<p><strong>5、使用Object.create()方法</strong></p>
+<p>直接使用var newObj = Object.create(oldObj)，可以达到深拷贝的效果。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">deepClone</span>(<span class="params">initalObj, finalObj</span>) </span>&#123;</span><br><span class="line">       <span class="keyword">var</span> obj = finalObj || &#123;&#125;;</span><br><span class="line">       <span class="keyword">for</span> (<span class="keyword">var</span> i <span class="keyword">in</span> initalObj) &#123;</span><br><span class="line">           <span class="keyword">var</span> prop = initalObj[i];</span><br><span class="line">           <span class="comment">// 避免相互引用对象导致死循环，如initalObj.a = initalObj的情况   </span></span><br><span class="line">           <span class="keyword">if</span> (prop === obj) &#123;</span><br><span class="line">               <span class="keyword">continue</span>;</span><br><span class="line">           &#125;</span><br><span class="line">           <span class="keyword">if</span> (<span class="keyword">typeof</span> prop === <span class="string">'object'</span>) &#123;</span><br><span class="line">               obj[i] = (prop.constructor === <span class="built_in">Array</span>) ? [] :<span class="built_in">Object</span>.create(prop);</span><br><span class="line">           &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">               obj[i] = prop;</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="keyword">return</span> obj;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+<p><strong>6、jquery</strong></p>
+<p>jquery 有提供一个<code>$.extend</code>可以用来做 Deep Copy。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> $ = <span class="built_in">require</span>(<span class="string">'jquery'</span>);</span><br><span class="line"><span class="keyword">var</span> obj1 = &#123;<span class="attr">a</span>: <span class="number">1</span>, <span class="attr">b</span>: &#123;<span class="attr">f</span>: &#123;<span class="attr">g</span>: <span class="number">1</span>&#125;&#125;, <span class="attr">c</span>: [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]&#125;;</span><br><span class="line"><span class="keyword">var</span> obj2 = $.extend(<span class="literal">true</span>, &#123;&#125;, obj1);</span><br><span class="line"><span class="built_in">console</span>.log(obj1.b.f === obj2.b.f);<span class="comment">// false</span></span><br></pre></td></tr></table></figure>
+<p><strong>7、lodash</strong></p>
+<p>另外一个很热门的函数库lodash，也有提供<code>_.cloneDeep</code>用来做 Deep Copy。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> _ = <span class="built_in">require</span>(<span class="string">'lodash'</span>);</span><br><span class="line">  <span class="keyword">var</span> obj1 = &#123;<span class="attr">a</span>: <span class="number">1</span>, <span class="attr">b</span>: &#123;<span class="attr">f</span>: &#123;<span class="attr">g</span>: <span class="number">1</span>&#125;&#125;, <span class="attr">c</span>: [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]&#125;;</span><br><span class="line">  <span class="keyword">var</span> obj2 = _.cloneDeep(obj1);</span><br><span class="line">  <span class="built_in">console</span>.log(obj1.b.f === obj2.b.f);<span class="comment">// false</span></span><br></pre></td></tr></table></figure>
+<p>这个性能还不错，使用起来也很简单。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/浅拷贝与深拷贝/" rel="tag"># 浅拷贝与深拷贝</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/09/16/谈谈setTimeout的作用域以及this的指向问题/" rel="prev" title="谈谈setTimeout的作用域以及this的指向问题">
+                谈谈setTimeout的作用域以及this的指向问题 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">增</p>
+              <p class="site-description motion-element" itemprop="description">JavaScript is the best language in the world</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#浅拷贝-Shallow-Copy-VS-深拷贝-Deep-Copy"><span class="nav-number">1.</span> <span class="nav-text">浅拷贝(Shallow Copy) VS 深拷贝(Deep Copy)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#浅拷贝的实现方式"><span class="nav-number">2.</span> <span class="nav-text">浅拷贝的实现方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#深拷贝的实现方式"><span class="nav-number">3.</span> <span class="nav-text">深拷贝的实现方式</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">增</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="LHS和RHS,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="问题来源于《你不知道的JavaScript（上卷）》，文章部分论述截自原书。 简述编译原理JavaScript通常会被归类为“动态”或“解释执行”语言，但事实上它是一门编译语言。但与传统的编译语言不同，它不是提前编译的，编译结果也不能在分布式系统上进行移植。 在传统编译语言的流程中，程序中的一段源代码在执行前会经历三个步骤，统称为“编译”。  分词 / 词法分析 解析 / 语法分析 代码生成  与">
+<meta name="keywords" content="LHS和RHS">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaScript中的LHS和RHS查询">
+<meta property="og:url" content="http://yoursite.com/2019/09/16/JavaScript中的LHS和RHS查询/index.html">
+<meta property="og:site_name" content="My notes">
+<meta property="og:description" content="问题来源于《你不知道的JavaScript（上卷）》，文章部分论述截自原书。 简述编译原理JavaScript通常会被归类为“动态”或“解释执行”语言，但事实上它是一门编译语言。但与传统的编译语言不同，它不是提前编译的，编译结果也不能在分布式系统上进行移植。 在传统编译语言的流程中，程序中的一段源代码在执行前会经历三个步骤，统称为“编译”。  分词 / 词法分析 解析 / 语法分析 代码生成  与">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="https://rzaliyun.oss-cn-beijing.aliyuncs.com/blog/LHS.png?x-oss-process=style/demo">
+<meta property="og:updated_time" content="2020-05-09T05:48:37.872Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JavaScript中的LHS和RHS查询">
+<meta name="twitter:description" content="问题来源于《你不知道的JavaScript（上卷）》，文章部分论述截自原书。 简述编译原理JavaScript通常会被归类为“动态”或“解释执行”语言，但事实上它是一门编译语言。但与传统的编译语言不同，它不是提前编译的，编译结果也不能在分布式系统上进行移植。 在传统编译语言的流程中，程序中的一段源代码在执行前会经历三个步骤，统称为“编译”。  分词 / 词法分析 解析 / 语法分析 代码生成  与">
+<meta name="twitter:image" content="https://rzaliyun.oss-cn-beijing.aliyuncs.com/blog/LHS.png?x-oss-process=style/demo">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/09/16/JavaScript中的LHS和RHS查询/">
+
+
+
+
+
+  <title>JavaScript中的LHS和RHS查询 | My notes</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">My notes</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/16/JavaScript中的LHS和RHS查询/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="增">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="My notes">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">JavaScript中的LHS和RHS查询</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-09-16T17:04:49+08:00">
+                2019-09-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/javascript/" itemprop="url" rel="index">
+                    <span itemprop="name">javascript</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>问题来源于《你不知道的JavaScript（上卷）》，文章部分论述截自原书。</p>
+<h4 id="简述编译原理"><a href="#简述编译原理" class="headerlink" title="简述编译原理"></a>简述编译原理</h4><p>JavaScript通常会被归类为“动态”或“解释执行”语言，但事实上它是一门编译语言。但与传统的编译语言不同，<strong>它不是提前编译的，编译结果也不能在分布式系统上进行移植</strong>。</p>
+<p>在传统编译语言的流程中，程序中的一段源代码在执行前会经历三个步骤，统称为“编译”。</p>
+<ol>
+<li><code>分词 / 词法分析</code></li>
+<li><code>解析 / 语法分析</code></li>
+<li><code>代码生成</code></li>
+</ol>
+<p>与其他语言不同，JavaScript的编译过程不是发生在构建之前的。对于JavaScript来说，<strong>大部分情况下编译发生在代码执行前的几微秒（甚至更短）的时间内</strong>。</p>
+<p>举个栗子，<code>var a = 2;</code> JavaScript引擎会将它分为几步完成呢？<br>  答案是两步，JavaScript 会将其看成两句声明：<code>var a;</code> 和 <code>a = 2;</code>。第一个定义声明在编译阶段进行，第二个赋值声明会被留在原地等待执行阶段。</p>
+<p>下面是原书对这句声明的拆解分析：</p>
+<p>变量的赋值操作会执行两个动作，首先编译器会在当前作用域中声明一个变量（如果之前没有声明过），然后在运行时引擎会在引用域中<code>查找</code>该变量，如果能够找到就会对它赋值。</p>
+<p>而要讲的<code>LHS</code> 和 <code>RHS</code> 就是上面说的对变量的两种查找操作，查找的过程是由作用域（词法作用域）进行协助，在编译的第二步中执行。</p>
+<h4 id="LHS-和-RHS"><a href="#LHS-和-RHS" class="headerlink" title="LHS 和 RHS"></a>LHS 和 RHS</h4><p>LHS(<code>Left-hand Side</code>)引用和RHS(<code>Right-hand Side</code>)引用。通常是指等号（赋值运算）的左右边的引用。<br>我们来看下面这句代码：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(a);</span><br></pre></td></tr></table></figure>
+<p>这里对a的引用是一个<code>RHS引用</code>，因为这里a并没有赋予任何值，我们只是想<code>查找并取得a的值</code>，然后将它打印出来。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a = <span class="number">2</span>;</span><br></pre></td></tr></table></figure>
+<p>这里对a的引用是一个<code>LHS引用</code>，因为我们并不关心当前的值是什么，只是想要<code>为赋值操作找到目标</code>。</p>
+<p>注：LHS和RHS的含义是“赋值操作的左侧和右侧”并不一定意味这就是”=”的左侧和右侧。赋值操作还有其他几种形式，因此在概念上最好将其理解为“<code>赋值操作的目标是谁（LHS）</code>”<code>以及“谁是赋值操作的源头（RHS）</code>”。</p>
+<p>这里再举一个较复杂的例子：（<strong>找出所有的LHS查询和所有的RHS查询</strong>）</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params">a</span>) </span>&#123;</span><br><span class="line"><span class="keyword">var</span> b = a;</span><br><span class="line"><span class="keyword">return</span> a + b;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> c = foo(<span class="number">2</span>);</span><br></pre></td></tr></table></figure>
+<p>这里一共有3个LHS查询和4个RHS查询，这里我们都来做个分析。</p>
+<p><strong>LHS：</strong></p>
+<ol>
+<li>第6行的 <code>c = ...</code>，c 在赋值操作的左边，所以对 c 需要 LHS 查询。</li>
+<li>隐藏着的 <code>a = 2</code><strong>（隐式变量分配）</strong>,在调用 <code>foo(2)</code> 时，需要将实参2赋值给形参a，所以对 a 需要 LHS 查询。</li>
+<li>第2行的<code>b = ...</code>, 解释同 1。</li>
+</ol>
+<p><strong>RHS：</strong></p>
+<ol>
+<li><p>第6行的 <code>c = foo(2)</code>，foo(2) 在赋值操作的右边，需要知道 foo(2)的值，对 foo(2) 需要 RHS 查询。</p>
+</li>
+<li><p>第2行的<code>b = a</code>， a 在赋值操作的右边，需要知道 a的值，对 a 需要 RHS 查询。</p>
+</li>
+<li><p>第3行的 <code>reutrn a + b;</code>， 需要知道 a 和 b 的值， 分别对 a 和 b 都进行 RHS 查询。</p>
+</li>
+</ol>
+<p>   小结：<strong>如果查找的目的是对变量进行赋值，那么就会使用LHS查询；</strong><br>      <strong>如果目的是获取变量的值，就会使用RHS查询。</strong></p>
+<h4 id="区分-LHS-和-RHS-的重要性"><a href="#区分-LHS-和-RHS-的重要性" class="headerlink" title="区分 LHS 和 RHS 的重要性"></a>区分 LHS 和 RHS 的重要性</h4><p>   因为在变量还没有声明(在任何作用域中都无法找到该变量)情况下，这两种查询行为是不一样的。</p>
+<p>   <code>LHS</code> 和 <code>RHS</code> 查询都会在当前执行作用域中开始，如果有需要（也就是说他们没有找到所需的标识符），就会向上级作用域继续查找目标标识符，这样每次上升一次作用域，最后抵达全局作用域，无论找到或没找到都将停止。</p>
+<p>   借用书中的一张图，将作用域链比喻成一个建筑，在对上面的论述进行一次转换。</p>
+<p>   （对作用域链的具体介绍可以移步 <a href="https://blog.csdn.net/zwkkkk1/article/details/79767681" target="_blank" rel="noopener">理解 JavaScript 的作用域链</a>）</p>
+<p>   <img src="https://rzaliyun.oss-cn-beijing.aliyuncs.com/blog/LHS.png?x-oss-process=style/demo" alt="img"></p>
+<p>   这个建筑代表储蓄中的嵌套作用域链。第一层楼代表当前的执行作用域，也就是你所在的位置。建筑的顶层代表全局作用域。</p>
+<p>   LHS 和 RHS 引用都会在当前楼层进行查找，如果没有找到，就会坐电梯前往上一层楼，如果还是没有找到就继续向上，以此类推。一旦抵达顶层（全局作用域），可能找到了你所需的变量，也可能没找到，但无论如何查找过程都将停止。<br>   <strong>总结:不成功的RHS引用会导致抛出 ReferenceError 异常。不成功的LHS引用会导致自动隐式地创建一个全局变量</strong>（<strong>非严格模式下</strong>），该变量使用LHS引用的目标作为标识符，或者抛出 <code>ReferenceError 异常</code>（<strong>严格模式下</strong>）。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/LHS和RHS/" rel="tag"># LHS和RHS</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/09/16/谈谈setTimeout的作用域以及this的指向问题/" rel="next" title="谈谈setTimeout的作用域以及this的指向问题">
+                <i class="fa fa-chevron-left"></i> 谈谈setTimeout的作用域以及this的指向问题
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/09/16/浅析浏览器渲染基本原理/" rel="prev" title="浅析浏览器渲染基本原理">
+                浅析浏览器渲染基本原理 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">增</p>
+              <p class="site-description motion-element" itemprop="description">JavaScript is the best language in the world</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#简述编译原理"><span class="nav-number">1.</span> <span class="nav-text">简述编译原理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#LHS-和-RHS"><span class="nav-number">2.</span> <span class="nav-text">LHS 和 RHS</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#区分-LHS-和-RHS-的重要性"><span class="nav-number">3.</span> <span class="nav-text">区分 LHS 和 RHS 的重要性</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">增</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
