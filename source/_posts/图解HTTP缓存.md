@@ -14,7 +14,7 @@ HTTP 缓存分为 2 种，一种是强缓存，另一种是协商缓存。主要
 
 
 
-![Http缓存.jpg](https://user-gold-cdn.xitu.io/2020/5/10/171fea0fec0b4668?imageView2/0/w/1280/h/960/format/webp/ignore-error/1)
+![Http缓存.jpg](https://rzaliyun.oss-cn-beijing.aliyuncs.com/blog/http_1.jpg?x-oss-process=style/demo)
 
 
 
@@ -62,7 +62,7 @@ app.listen(3000);
 
 
 
-![缓存1.jpg](https://user-gold-cdn.xitu.io/2020/5/10/171fea0fefc0c914?imageView2/0/w/1280/h/960/format/webp/ignore-error/1)
+![缓存1.jpg](https://rzaliyun.oss-cn-beijing.aliyuncs.com/blog/http_2.jpg?x-oss-process=style/demo)
 
 
 
@@ -70,7 +70,7 @@ app.listen(3000);
 
 
 
-![缓存2.jpg](https://user-gold-cdn.xitu.io/2020/5/10/171fea0fec38cd06?imageView2/0/w/1280/h/960/format/webp/ignore-error/1)
+![缓存2.jpg](https://rzaliyun.oss-cn-beijing.aliyuncs.com/blog/http_3.jpg?x-oss-process=style/demo)
 
 
 
@@ -78,7 +78,7 @@ app.listen(3000);
 
 
 
-![缓存3.jpg](https://user-gold-cdn.xitu.io/2020/5/10/171fea0ff0566887?imageView2/0/w/1280/h/960/format/webp/ignore-error/1)
+![缓存3.jpg](https://rzaliyun.oss-cn-beijing.aliyuncs.com/blog/http_4.jpg?x-oss-process=style/demo)
 
 
 
@@ -86,7 +86,7 @@ app.listen(3000);
 
 
 
-![缓存5.jpg](https://user-gold-cdn.xitu.io/2020/5/10/171fea0ff1465018?imageView2/0/w/1280/h/960/format/webp/ignore-error/1)
+![缓存5.jpg](https://rzaliyun.oss-cn-beijing.aliyuncs.com/blog/http_5.jpg?x-oss-process=style/demo)
 
 
 
@@ -126,7 +126,7 @@ app.listen(3001);
 
 
 
-![缓存6.jpg](https://user-gold-cdn.xitu.io/2020/5/10/171fea0ff25773ac?imageView2/0/w/1280/h/960/format/webp/ignore-error/1)
+![缓存6.jpg](https://rzaliyun.oss-cn-beijing.aliyuncs.com/blog/http_6.jpg?x-oss-process=style/demo)
 
 
 
@@ -134,7 +134,7 @@ app.listen(3001);
 
 
 
-![缓存7.jpg](https://user-gold-cdn.xitu.io/2020/5/10/171fea102889a5fc?imageView2/0/w/1280/h/960/format/webp/ignore-error/1)
+![缓存7.jpg](https://rzaliyun.oss-cn-beijing.aliyuncs.com/blog/http_7.jpg?x-oss-process=style/demo)
 
 
 
@@ -171,13 +171,13 @@ app.listen(4000); // 使用新端口号，否则上面验证的协商缓存会�
 
 
 
-![缓存10.jpg](https://user-gold-cdn.xitu.io/2020/5/10/171fea1028a3c5a1?imageView2/0/w/1280/h/960/format/webp/ignore-error/1)
+![缓存10.jpg](https://rzaliyun.oss-cn-beijing.aliyuncs.com/blog/http_8.jpg?x-oss-process=style/demo)
 
 
 
 
 
-![缓存11.jpg](https://user-gold-cdn.xitu.io/2020/5/10/171fea102b4fd3ff?imageView2/0/w/1280/h/960/format/webp/ignore-error/1)
+![缓存11.jpg](https://rzaliyun.oss-cn-beijing.aliyuncs.com/blog/http_9.jpg?x-oss-process=style/demo)
 
 
 
@@ -185,7 +185,7 @@ app.listen(4000); // 使用新端口号，否则上面验证的协商缓存会�
 
 
 
-![缓存13.jpg](https://user-gold-cdn.xitu.io/2020/5/10/171fea102b886f6d?imageView2/0/w/1280/h/960/format/webp/ignore-error/1)
+![缓存13.jpg](https://rzaliyun.oss-cn-beijing.aliyuncs.com/blog/http_10.jpg?x-oss-process=style/demo)
 
 
 
@@ -202,7 +202,7 @@ ETag/If-None-Match 的出现主要解决了 Last-Modified/If-Modified-Since 所�
 
 
 
-![Http缓存.jpg](https://user-gold-cdn.xitu.io/2020/5/10/171fea0fec0b4668?imageView2/0/w/1280/h/960/format/webp/ignore-error/1)
+![Http缓存.jpg](https://rzaliyun.oss-cn-beijing.aliyuncs.com/blog/http_11.jpg?x-oss-process=style/demo)
 
 
 

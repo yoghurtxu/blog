@@ -5,8 +5,8 @@
   
 
 
-<html class="theme-next pisces use-motion" lang="">
-<head><meta name="generator" content="Hexo 3.8.0">
+<html class="theme-next pisces use-motion" lang>
+<head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -87,15 +87,15 @@
 <meta property="og:site_name" content="My notes">
 <meta property="og:description" content="众所周知，JavaScript 浮点数运算时经常遇到会 0.000000001 和 0.999999999 这样奇怪的结果，如 0.1+0.2=0.30000000000000004、1-0.9=0.09999999999999998，很多人知道这是浮点数误差问题，但具体就说不清楚了。本文帮你理清这背后的原理以及解决方案，还会向你解释JS中的大数危机和四则运算中会遇到的坑。 浮点数的存储首先要搞清">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="https://user-gold-cdn.xitu.io/2017/10/16/12becba5556d4633f749bf8f8d312f5e?imageView2/0/w/1280/h/960/ignore-error/1">
-<meta property="og:image" content="https://user-gold-cdn.xitu.io/2017/10/16/b54d8a72f80652b798b395e539d2c543?imageView2/0/w/1280/h/960/ignore-error/1">
-<meta property="og:image" content="https://user-gold-cdn.xitu.io/2017/10/16/4ec1223bc56c8b7c364706afdb12a15b?imageView2/0/w/1280/h/960/ignore-error/1">
-<meta property="og:image" content="https://user-gold-cdn.xitu.io/2017/10/16/c5746c2d778728ed6d1fc8541f5c75d0?imageView2/0/w/1280/h/960/ignore-error/1">
-<meta property="og:updated_time" content="2020-05-13T06:21:15.672Z">
+<meta property="og:image" content="https://rzaliyun.oss-cn-beijing.aliyuncs.com/blog/point_1.jpg?x-oss-process=style/demo">
+<meta property="og:image" content="https://rzaliyun.oss-cn-beijing.aliyuncs.com/blog/point_2.jpg?x-oss-process=style/demo">
+<meta property="og:image" content="https://rzaliyun.oss-cn-beijing.aliyuncs.com/blog/point_3.jpg?x-oss-process=style/demo">
+<meta property="og:image" content="https://rzaliyun.oss-cn-beijing.aliyuncs.com/blog/point_4.jpg?x-oss-process=style/demo">
+<meta property="og:updated_time" content="2020-05-19T07:24:01.322Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="浮点数陷阱及解法">
 <meta name="twitter:description" content="众所周知，JavaScript 浮点数运算时经常遇到会 0.000000001 和 0.999999999 这样奇怪的结果，如 0.1+0.2=0.30000000000000004、1-0.9=0.09999999999999998，很多人知道这是浮点数误差问题，但具体就说不清楚了。本文帮你理清这背后的原理以及解决方案，还会向你解释JS中的大数危机和四则运算中会遇到的坑。 浮点数的存储首先要搞清">
-<meta name="twitter:image" content="https://user-gold-cdn.xitu.io/2017/10/16/12becba5556d4633f749bf8f8d312f5e?imageView2/0/w/1280/h/960/ignore-error/1">
+<meta name="twitter:image" content="https://rzaliyun.oss-cn-beijing.aliyuncs.com/blog/point_1.jpg?x-oss-process=style/demo">
 
 
 
@@ -143,7 +143,7 @@
 
 </head>
 
-<body itemscope="" itemtype="http://schema.org/WebPage" lang="default">
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
 
   
   
@@ -153,7 +153,7 @@
   <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 <a target="_blank" href="https://github.com/yoghurtxu" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewbox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
-    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-wrapper">
   <div class="site-meta ">
     
@@ -295,20 +295,20 @@
   
   
 
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
   
   
   
   <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/13/浮点数陷阱及解法/">
 
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="增">
-      <meta itemprop="description" content="">
+      <meta itemprop="description" content>
       <meta itemprop="image" content="/images/blog.jpg">
     </span>
 
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="My notes">
     </span>
 
@@ -351,7 +351,7 @@
                 <span class="post-meta-item-text">In</span>
               
               
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/javascript/" itemprop="url" rel="index">
                     <span itemprop="name">javascript</span>
                   </a>
@@ -439,15 +439,18 @@
 <li>指数位E：中间的 11 位存储指数（exponent），用来表示次方数</li>
 <li>尾数位M：最后的 52 位是尾数（mantissa），超出的部分自动进一舍零</li>
 </ul>
-<p>￼<a href="https://link.juejin.im/?target=https%3A%2F%2Fcamo.githubusercontent.com%2Faf8c1cdd9aedced18be47e40d27208b671b4a18d%2F687474703a2f2f617461322d696d672e636e2d68616e677a686f752e696d672d7075622e616c6979756e2d696e632e636f6d2f37323637613538623239383932633362373233653364366333663733393035612e706e67" target="_blank" rel="noopener"><img src="https://user-gold-cdn.xitu.io/2017/10/16/12becba5556d4633f749bf8f8d312f5e?imageView2/0/w/1280/h/960/ignore-error/1" alt="64 bit allocation"></a></p>
-<p>实际数字就可以用以下公式来计算：<br>￼<br>$ V = (-1)^{S}\times M \times 2^{E} $</p>
+<p><a href="https://link.juejin.im/?target=https%3A%2F%2Fcamo.githubusercontent.com%2Faf8c1cdd9aedced18be47e40d27208b671b4a18d%2F687474703a2f2f617461322d696d672e636e2d68616e677a686f752e696d672d7075622e616c6979756e2d696e632e636f6d2f37323637613538623239383932633362373233653364366333663733393035612e706e67" target="_blank" rel="noopener"><img src="https://rzaliyun.oss-cn-beijing.aliyuncs.com/blog/point_1.jpg?x-oss-process=style/demo" alt="64 bit allocation"></a></p>
+<p>实际数字就可以用以下公式来计算：</p>
+<p>$ V = (-1)^{S}\times M \times 2^{E} $</p>
 <p>注意以上的公式遵循科学计数法的规范，在十进制是为0&lt;M&lt;10，到二进行就是0&lt;M&lt;2。也就是说整数部分只能是1，所以可以被舍去，只保留后面的小数部分。如 4.5 转换成二进制就是 100.1，科学计数法表示是 1.001*2^2，舍去1后 <code>M = 001</code>。E是一个无符号整数，因为长度是11位，取值范围是 0~2047。但是科学计数法中的指数是可以为负数的，所以再减去一个中间数 1023，[0,1022]表示为负，[1024,2047] 表示为正。如4.5 的指数<code>E = 1025</code>，尾数M为 001。</p>
 <p>最终的公式变成：</p>
 <p>$ V = (-1)^{S}\times (M+1) \times 2^{E-1023} $</p>
-<p>所以 <code>4.5</code> 最终表示为（M=001、E=1025）：<br>￼<br><a href="https://link.juejin.im/?target=https%3A%2F%2Fcamo.githubusercontent.com%2F33b3006b6e3b7a15b9bda858ac01a372981ff248%2F687474703a2f2f617461322d696d672e636e2d68616e677a686f752e696d672d7075622e616c6979756e2d696e632e636f6d2f33353661306164643137356263663436393664353731613862656232303633642e706e67" target="_blank" rel="noopener"><img src="https://user-gold-cdn.xitu.io/2017/10/16/b54d8a72f80652b798b395e539d2c543?imageView2/0/w/1280/h/960/ignore-error/1" alt="4.5 allocation map"></a></p>
+<p>所以 <code>4.5</code> 最终表示为（M=001、E=1025）：</p>
+<p><a href="https://link.juejin.im/?target=https%3A%2F%2Fcamo.githubusercontent.com%2F33b3006b6e3b7a15b9bda858ac01a372981ff248%2F687474703a2f2f617461322d696d672e636e2d68616e677a686f752e696d672d7075622e616c6979756e2d696e632e636f6d2f33353661306164643137356263663436393664353731613862656232303633642e706e67" target="_blank" rel="noopener"><img src="https://rzaliyun.oss-cn-beijing.aliyuncs.com/blog/point_2.jpg?x-oss-process=style/demo" alt="4.5 allocation map"></a></p>
 <p>(图片由此生成 <a href="https://link.juejin.im/?target=http%3A%2F%2Fwww.binaryconvert.com%2Fconvert_double.html" target="_blank" rel="noopener">www.binaryconvert.com/convert_dou…</a>)</p>
 <p>下面再以 <code>0.1</code> 例解释浮点误差的原因， <code>0.1</code> 转成二进制表示为 <code>0.0001100110011001100</code>(1100循环)，<code>1.100110011001100x2^-4</code>，所以 <code>E=-4+1023=1019</code>；M 舍去首位的1，得到 <code>100110011...</code>。最终就是：</p>
-<p><a href="https://link.juejin.im/?target=https%3A%2F%2Fcamo.githubusercontent.com%2F61cae30c09580aba68ffbfcf3b080e9688fd7609%2F687474703a2f2f617461322d696d672e636e2d68616e677a686f752e696d672d7075622e616c6979756e2d696e632e636f6d2f36313561643436316130653836343166316238393837316532656666383765662e706e67" target="_blank" rel="noopener"><img src="https://user-gold-cdn.xitu.io/2017/10/16/4ec1223bc56c8b7c364706afdb12a15b?imageView2/0/w/1280/h/960/ignore-error/1" alt="0.1 allocation map"></a><br>￼<br>转化成十进制后为 <code>0.100000000000000005551115123126</code>，因此就出现了浮点误差。</p>
+<p><a href="https://link.juejin.im/?target=https%3A%2F%2Fcamo.githubusercontent.com%2F61cae30c09580aba68ffbfcf3b080e9688fd7609%2F687474703a2f2f617461322d696d672e636e2d68616e677a686f752e696d672d7075622e616c6979756e2d696e632e636f6d2f36313561643436316130653836343166316238393837316532656666383765662e706e67" target="_blank" rel="noopener"><img src="https://rzaliyun.oss-cn-beijing.aliyuncs.com/blog/point_3.jpg?x-oss-process=style/demo" alt="0.1 allocation map"></a></p>
+<p>转化成十进制后为 <code>0.100000000000000005551115123126</code>，因此就出现了浮点误差。</p>
 <h3 id="为什么-0-1-0-2-0-30000000000000004？"><a href="#为什么-0-1-0-2-0-30000000000000004？" class="headerlink" title="为什么 0.1+0.2=0.30000000000000004？"></a>为什么 <code>0.1+0.2=0.30000000000000004</code>？</h3><p>计算步骤为：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">// 0.1 和 0.2 都转化成二进制后再进行运算</span><br><span class="line">0.00011001100110011001100110011001100110011001100110011010 +</span><br><span class="line">0.0011001100110011001100110011001100110011001100110011010 =</span><br><span class="line">0.0100110011001100110011001100110011001100110011001100111</span><br><span class="line"></span><br><span class="line">// 转成十进制正好是 0.30000000000000004</span><br></pre></td></tr></table></figure>
 <h3 id="为什么-x-0-1-能得到-0-1？"><a href="#为什么-x-0-1-能得到-0-1？" class="headerlink" title="为什么 x=0.1 能得到 0.1？"></a>为什么 <code>x=0.1</code> 能得到 <code>0.1</code>？</h3><p>恭喜你到了看山不是山的境界。因为 mantissa 固定长度是 52 位，再加上省略的一位，最多可以表示的数是 <code>2^53=9007199254740992</code>，对应科学计数尾数是 <code>9.007199254740992</code>，这也是 JS 最多能表示的精度。它的长度是 16，所以可以使用 <code>toPrecision(16)</code> 来做精度运算，超过的精度会自动做凑整处理。于是就有：</p>
@@ -460,7 +463,7 @@
 <li><code>(2^54, 2^55)</code> 之间的数会四个选一个，只能精确表示4个倍数</li>
 <li>… 依次跳过更多2的倍数</li>
 </ul>
-<p>下面这张图能很好的表示 JavaScript 中浮点数和实数（Real Number）之间的对应关系。我们常用的 <code>(-2^53, 2^53)</code> 只是最中间非常小的一部分，越往两边越稀疏越不精确。<br><a href="https://link.juejin.im/?target=https%3A%2F%2Fcamo.githubusercontent.com%2Fa2ff3ec159c480822b09b45d80d1211655b492f0%2F687474703a2f2f617461322d696d672e636e2d68616e677a686f752e696d672d7075622e616c6979756e2d696e632e636f6d2f65656539613263613238646433643865366630663563383939353661623433612e6a7067" target="_blank" rel="noopener"><img src="https://user-gold-cdn.xitu.io/2017/10/16/c5746c2d778728ed6d1fc8541f5c75d0?imageView2/0/w/1280/h/960/ignore-error/1" alt="fig1.jpg"></a></p>
+<p>下面这张图能很好的表示 JavaScript 中浮点数和实数（Real Number）之间的对应关系。我们常用的 <code>(-2^53, 2^53)</code> 只是最中间非常小的一部分，越往两边越稀疏越不精确。<br><a href="https://link.juejin.im/?target=https%3A%2F%2Fcamo.githubusercontent.com%2Fa2ff3ec159c480822b09b45d80d1211655b492f0%2F687474703a2f2f617461322d696d672e636e2d68616e677a686f752e696d672d7075622e616c6979756e2d696e632e636f6d2f65656539613263613238646433643865366630663563383939353661623433612e6a7067" target="_blank" rel="noopener"><img src="https://rzaliyun.oss-cn-beijing.aliyuncs.com/blog/point_4.jpg?x-oss-process=style/demo" alt="fig1.jpg"></a></p>
 <p>在淘宝早期的订单系统中把订单号当作数字处理，后来随意订单号暴增，已经超过了<br><code>9007199254740992</code>，最终的解法是把订单号改成字符串处理。</p>
 <p>要想解决大数的问题你可以引用第三方库 <a href="https://link.juejin.im/?target=https%3A%2F%2Fgithub.com%2FMikeMcl%2Fbignumber.js%2F" target="_blank" rel="noopener">bignumber.js</a>，原理是把所有数字当作字符串，重新实现了计算逻辑，缺点是性能比原生的差很多。所以原生支持大数就很有必要了，现在 TC39 已经有一个 Stage 3 的提案 <a href="https://link.juejin.im/?target=https%3A%2F%2Fgithub.com%2Ftc39%2Fproposal-bigint" target="_blank" rel="noopener">proposal bigint</a>，大数问题有问彻底解决。</p>
 <h3 id="toPrecision-vs-toFixed"><a href="#toPrecision-vs-toFixed" class="headerlink" title="toPrecision vs toFixed"></a><code>toPrecision</code> vs <code>toFixed</code></h3><p>数据处理时，这两个函数很容易混淆。它们的共同点是把数字转成字符串供展示使用。注意在计算的中间过程不要使用，只用于最终结果。</p>
@@ -502,7 +505,7 @@
   <p><span>本文标题:</span><a href="/2019/11/13/浮点数陷阱及解法/">浮点数陷阱及解法</a></p>
   <p><span>文章作者:</span><a href="/" title="访问 增 的个人博客">增</a></p>
   <p><span>发布时间:</span>2019年11月13日 - 20:18</p>
-  <p><span>最后更新:</span>2020年05月13日 - 14:21</p>
+  <p><span>最后更新:</span>2020年05月19日 - 15:24</p>
   <p><span>原始链接:</span><a href="/2019/11/13/浮点数陷阱及解法/" title="浮点数陷阱及解法">http://yoursite.com/2019/11/13/浮点数陷阱及解法/</a>
     <span class="copy-path" title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://yoursite.com/2019/11/13/浮点数陷阱及解法/" aria-label="复制成功！"></i></span>
   </p>
@@ -639,7 +642,7 @@
 
       <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
-          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
               <img class="site-author-image" itemprop="image" src="/images/blog.jpg" alt="增">
             
